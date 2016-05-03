@@ -1,0 +1,29 @@
+# Equipping My New Robot with Elevator Abilities #
+- Approach Elevator enclave.
+- Ask human companion "Going up or going down?".
+- If "going up" in elevator
+	- Press ▲ button.
+-If "going Down" in elevator
+	- Press ▼ button.
+- Wait for elevator to arrive at current floor.
+- When doors open, wait for passengers in elevator to disembark.
+- Enter elevator with human companion.
+- Ask human companion "What floor would you like?"
+- Scan button panel and compare numbers represented to the phonetic numbers you've been programmed to understand aurally. 
+- Press button for the floor your human companion has orally dispatched to you.
+- Make uncomfortable small talk with your human companion.  
+- Wait for elevator to arrive at destination floor. 
+- When elevator doors open, exit the elevator with human companion. 
+
+
+# The Laudry Smell-o-tron # 
+- Gather all used laundry from bedroom floor. 
+- Compile all laundry into a single pile. 
+- Choose one piece of laundry at a time. 
+- Smell the piece of laundry. 
+- If laundry smells "bad"
+	- Put it in the "wash pile".
+- If laundry smells "fine"
+	- Fold it and put it away for further use. 
+- Take "wash pile" to laundromat as soon as possible. 
+- Repeat weekly. 
