@@ -3,7 +3,7 @@
 - Ask human companion "Going up or going down?".
 - If "going up" in elevator
 	- Press ▲ button.
--If "going Down" in elevator
+- If "going Down" in elevator
 	- Press ▼ button.
 - Wait for elevator to arrive at current floor.
 - When doors open, wait for passengers in elevator to disembark.
