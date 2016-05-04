@@ -1,3 +1,37 @@
+* {
+	box-sizing: border-box;
+}
 body {
-	background-color: blue;
+	background-color: #9FC5E8;
+	font-family: helvetica;
+}
+.column-1 {
+width: 50%;
+float:left;
+padding: 10px;
+
+}
+.column-2 {
+width: 50%;
+float: left;
+padding: 20px;
+
+}
+
+a:visited {
+	color: red;
+}
+
+a:link {
+	color: #0B5394;
+}
+
+header {
+	background-color: #608FBA;
+}
+
+footer {
+	clear: both; 
+	padding-top: 20px;
+
 }
