@@ -30,7 +30,8 @@ end
 current_year = 2016
 
 #Check for correct age
-if age == current_year - birth_year
+correct_age = current_year - birth_year
+if age == correct_age 
 	correct_age = true
 else 
 	correct_age = false
@@ -39,33 +40,28 @@ end
 #Check for garlic preference
 if garlic_love == "yes"
 	garlic_love = true
-else 
+else garlic_love == "no"
 	garlic_love = false
 end
 
 #Check for health insurance preference
 if health == "yes"
 	health = true
-else
+else health == "no"
 	health = false
 end
 
-#Check suspicious names
-if name == "Drake Ula"
-	vampire_detect = "Definitely a vampire. Get the stake immediately."
-elsif name == "Tu Fang"
-	vampire_detect = "Definitely a vampire. Get the stake immediately."
-else vampire_detect = false
-end
-
 #Vampire Detection Conditions
-if  correct_age && garlic_love == "yes" && health == "yes"
-	vampire_detect = "Probably not a vampire."
-elsif correct_age || (garlic_love == "no" && health == "no")
+if  correct_age = true && garlic_love = true && health = true
+	puts "Probably not a vampire."
+elsif (correct_age = false && garlic_love = false) || health == false
 	puts "Probably a vampire. Proceed with caution."
-elsif (correct_age && garlic_love == "no") || health == "no"
+elsif correct_age = false && garlic_love == false && health == false
 	puts "Almost certainly a vampire. Prepare the silver."
-elsif (name == "Drake Ula" || name == "Tu Fang")
+#Check suspicious names
+elsif name == "Drake Ula"
+	puts "Definitely a vampire. Get the stake immediately."
+elsif name == "Tu Fang"
 	puts "Definitely a vampire. Get the stake immediately."
 else puts "Results inconclusive."
 end
