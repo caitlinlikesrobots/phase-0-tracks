@@ -68,8 +68,8 @@
 			break
 		end
 		end
-
-
+		
+#Prints employee information
 		print	"Employee name: #{name}""\n"
 		print 	"Employee age: #{age}""\n"
 		print	"Employee birth year: #{birth_year}""\n"
