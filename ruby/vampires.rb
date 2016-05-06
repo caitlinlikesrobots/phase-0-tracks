@@ -16,7 +16,7 @@
 		puts "Would you like to enroll in our company's health insurance? (yes/no)"
 			health = gets.chomp.downcase
 
-current_year = 2016
+		current_year = 2016
 #Check for correct age
 		correct_age = current_year - birth_year
 		if correct_age == age 
@@ -41,15 +41,14 @@ current_year = 2016
 
 #Vampire Detection Logic
 		if name == "Drake Ula" || "Tu Fang"
-			vampire_detect = "Definitely a vampire. Get the stake immediately."
+			puts "Definitely a vampire. Get the stake immediately."
 		elsif  correct_age = true && garlic_love = true && health = true
-			vampire_detect = "Probably not a vampire."
+			puts "Probably not a vampire."
 		elsif correct_age = false && ( garlic_love = false || health = false)
-			vampire_detect = "Probably a vampire. Proceed with caution."
+			 puts "Probably a vampire. Proceed with caution."
 		elsif correct_age = false && garlic_love = false && health = false
-			vampire_detect = "Almost certainly a vampire. Prepare the silver."
-		else vampire_detect = "Results inconclusive."
-		print vampire_detect
+			puts "Almost certainly a vampire. Prepare the silver."
+		else puts "Results inconclusive."
 		end
 
 #Check for allergies loop
@@ -65,8 +64,7 @@ current_year = 2016
 			puts "Name your allergy."
 			allergy = gets.chomp.downcase
 		if 	allergy == "sunshine"
-			vampire_detect= "Probably a Vampire. Be careful!"
-		puts vampire_detect
+			puts "Probably a Vampire. Be careful!"
 			break
 		end
 		end
