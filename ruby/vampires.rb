@@ -42,14 +42,14 @@ current_year = 2016
 #Vampire Detection Logic
 		if name == "Drake Ula" || "Tu Fang"
 			vampire_detect = "Definitely a vampire. Get the stake immediately."
-		elsif  correct_age && garlic_love && health
+		elsif  correct_age = true && garlic_love = true && health = true
 			vampire_detect = "Probably not a vampire."
-		elsif !correct_age && ( !garlic_love || !health)
+		elsif correct_age = false && ( garlic_love = false || health = false)
 			vampire_detect = "Probably a vampire. Proceed with caution."
-		elsif !correct_age && !garlic_love && !health 
+		elsif correct_age = false && garlic_love = false && health = false
 			vampire_detect = "Almost certainly a vampire. Prepare the silver."
 		else vampire_detect = "Results inconclusive."
-		puts vampire_detect
+		print vampire_detect
 		end
 
 #Check for allergies loop
