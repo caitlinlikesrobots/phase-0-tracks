@@ -16,11 +16,7 @@
 		puts "Would you like to enroll in our company's health insurance? (yes/no)"
 			health=gets.chomp.downcase
 #Check for allergies loop [make this a method?]
-		puts "Do you have any allergies? If so write 'yes'. No allergies? Lucky! Write 'done' now."
-			allergies=gets.chomp.downcase
-		if allergies.chomp.downcase=="yes"
-			puts "Please enter your allergies one at a time. Press enter after each allergy."
-		end
+		puts "Do you have any allergies? If so write 'yes'. No allergies? Lucky! Write 'done' at any time."
 
 			allergy=nil
 		until allergy == "done"
