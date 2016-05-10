@@ -39,5 +39,8 @@ emotions_array.keep_if {|emotion| emotion.length > 5 }
 p emotions_array
 
 
-
+music_hash = {"The Prodigy" => 10, "Lead Belly" => 9, "Gogol Bordello" => 9, "Prince" => 11}
+puts "Artists rated from 1-10 (10 being greatest)."
+music_hash.keep_if { |band, greatness| greatness >= 10 }
+p music_hash
 
