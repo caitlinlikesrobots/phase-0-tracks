@@ -52,7 +52,14 @@ puts "Distance is in bazillion miles."
 planet_distance.select! { |planet, distance| distance < 400 }
 p planet_distance
 
+#4
+frustration_level = [6, 7, 8, 9, 99999]
+frustration_level.reject! { |frustration| frustration < 9 }
+p frustration_level
 
+cuddle_buddies = {"Taquito" => 3, "Zemma" => 9, "Steve" => 8}
+cuddle_buddies.reject! { |pet, cuddlability| cuddlability < 7 }
+p cuddle_buddies
 
 
 
