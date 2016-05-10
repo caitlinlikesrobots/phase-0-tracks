@@ -44,3 +44,15 @@ puts "Artists rated from 1-10 (10 being greatest)."
 music_hash.keep_if { |band, greatness| greatness >= 10 }
 p music_hash
 
+#3
+[1, 2, 3, 4, 5].product([6, 7, 8]){|p| p p}
+
+planet_distance = {"Mars" => 100, "Jupiter" => 420, "Saturn" => 825}
+puts "Distance is in bazillion miles."
+planet_distance.select! { |planet, distance| distance < 400 }
+p planet_distance
+
+
+
+
+
