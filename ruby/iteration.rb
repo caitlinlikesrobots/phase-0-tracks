@@ -24,7 +24,7 @@ end
 
 p zoo
 
-
+#1
 pain_level = [1, 2, 3, 4, 5]
 pain_level.delete_if { |pain| pain.even? }
 p pain_level
@@ -32,3 +32,12 @@ p pain_level
 ascii_char_hash = {"A" => 65, "B" => 68, "C" => 67}
 ascii_char_hash.delete_if {|char, dec_num| char.ord != dec_num}
 p ascii_char_hash
+
+#2
+emotions_array = ["happy", "sad", "hangry", "nervous"]
+emotions_array.keep_if {|emotion| emotion.length > 5 }
+p emotions_array
+
+
+
+
