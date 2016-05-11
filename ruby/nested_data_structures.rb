@@ -45,3 +45,4 @@ p mansion [:guests].reverse
 p mansion [:ghosts][:ghost1].fetch(:name)
 p mansion [:ghosts][:ghost3].values
 p mansion [:guests].rotate(2)
+p mansion [:ghosts][:ghost3].fetch(:activity)
