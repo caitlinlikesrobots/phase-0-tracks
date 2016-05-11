@@ -62,4 +62,3 @@ cuddle_buddies.reject! { |pet, cuddlability| cuddlability < 7 }
 p cuddle_buddies
 
 
-
