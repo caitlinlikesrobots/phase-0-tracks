@@ -8,7 +8,7 @@ mansion = {
 		"Kristoff Belvedere", 
 		"Gordon Gilmore",
 		"Jens Starsgaard", 
-		"His Pet Tiger"
+		"his Pet Tiger, Leonard"
 	],
 
 	ghosts: {
@@ -33,11 +33,15 @@ mansion = {
 				character: "The Rebellious Teenager", 
 				age_at_demise:18,
 				year_of_demise: "Unwilling to say.",
-				activity: "Smokes ghost cigarettes and can often be heard saying 'phonies' regarding guests.",
+				activity: "Smokes ghost cigarettes and can often be heard muttering 'phonies' regarding guests.",
 			   },
 			},
 }
 
 # p mansion
 
-p mansion [:guests][1]
+p mansion [:guests][5]
+p mansion [:guests].reverse
+p mansion [:ghosts][:ghost1].fetch(:name)
+p mansion [:ghosts][:ghost3].values
+p mansion [:guests].rotate(2)
