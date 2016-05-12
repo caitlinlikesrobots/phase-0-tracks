@@ -16,16 +16,18 @@ def new_vowels
 	vowels = "aeiou".split('')
 	vowels.class
 	new_vowels = vowels.rotate!
-	p new_vowels
 end
+
+# puts new_vowels
 
 #moves consonants forward one character
 def new_consonants
 	consonants = "bcdfghjklmnpqrstvwxyz".split('')
 	consonants.class
 	new_consonants = consonants.rotate!
-	p new_consonants
 end
+
+# puts new_consonants
 
 #Generate new names
 screen = "clear"
@@ -33,15 +35,46 @@ screen = "clear"
 
 puts "Hello agent. What is your first and last name?"
 name = gets.chomp.downcase.split(" ")
-name.rotate
-name.class
-name.join('')
+
+#swaps first and last names
+name.shuffle!
+
+
+# def alias_generator(name)
+# i = 0
+# new_vowels
+# new_consonants
+# while i < name.length
+# 	if name[i] == " "
+
+# 	end
+
+# 	i += 1
+# end
+# 	return name
+# end
+
+# puts "Hello agent. What is your first and last name?"
+# name = gets.chomp.downcase.split(" ")
+
+# #swaps first and last names
+# name.rotate!
+# name.class
+# new_vowels(name)
+# new_consonants(name)
+# swap_name = name.join(" ")
+
+# alias_generator(name)
 
 
 
-name = gets.chomp.chars.map(&:downcase)
-p name
-name.class
+
+
+
+
+# name = gets.chomp.chars.map(&:downcase)
+# p name
+# name.class
 
 
 # name_arr = []
@@ -49,10 +82,7 @@ name.class
 #  	name_arr << name.to_i
 #  	name = gets.chomp
 #  end
-first_name.class
-new_vowels(first_name)
-new_consonants(first_name)
-p new_first_name
+
 
 
 
