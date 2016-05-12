@@ -27,11 +27,18 @@ def new_consonants
 	p new_consonants
 end
 
-#Generate new first names
+#Generate new names
 screen = "clear"
 
 
 puts "Hello agent. What is your first and last name?"
+name = gets.chomp.downcase.split(" ")
+name.rotate
+name.class
+name.join('')
+
+
+
 name = gets.chomp.chars.map(&:downcase)
 p name
 name.class
