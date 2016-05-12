@@ -6,44 +6,49 @@
 	* in this instance, y will be a consonant
 =end
 
-first_name = gets.chomp
-last_name = gets.chomp
-name = first_name + last_name
+# first_name = gets.chomp.downcase
+# last_name = gets.chomp.downcase
+# name = first_name + last_name
+# alias = last_name + first_name
 
 #moves vowels forward one character
 def new_vowels
 	vowels = "aeiou".split('')
 	vowels.class
-	vowels.rotate!
-	vowels
-	new_vowels = vowels.join('')
+	new_vowels = vowels.rotate!
+	p new_vowels
 end
-
 
 #moves consonants forward one character
 def new_consonants
-	consonants = "bcdfghjklmnpqrstvwxyz".split
+	consonants = "bcdfghjklmnpqrstvwxyz".split('')
 	consonants.class
-	consonants.rotate!
-	consonants
-	new_consonants = consonants.join('')
+	new_consonants = consonants.rotate!
+	p new_consonants
 end
 
+#Generate new first names
+screen = "clear"
+
+
+puts "Hello agent. What is your first and last name?"
+name = gets.chomp.chars.map(&:downcase)
+p name
+name.class
+
+
+# name_arr = []
+#  while name != "done"
+#  	name_arr << name.to_i
+#  	name = gets.chomp
+#  end
+first_name.class
+new_vowels(first_name)
+new_consonants(first_name)
+p new_first_name
 
 
 
 
 
-# index = 0
-# def next_vowel
-# 	while index < vowel.length
-# 	if vowel[index] == "u"
-# 			vowel[index] = "a"
-# 		else
-# 			vowel[index] = vowel[index].next
-# 	end
-# 	index += 1
-# 	end
-# end
 
-p next_vowel("aimee")
