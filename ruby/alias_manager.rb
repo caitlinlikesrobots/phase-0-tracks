@@ -16,36 +16,39 @@ $vowels = "aeiou"
 consonants = "bcdfghjklmnpqrstvwxyz"
 
 #moves vowels forward one character
-def new_vowels(letter)
-	$vowels = "aeiou".split('')
-	$vowels.class
-	new_vowels = $vowels.rotate!
-	new_vowels.join('')
+def new_vowels(array)
+	$vowels = []
+	$vowels << "a"
+	$vowels << "e"
+	$vowels << "i"
+	$vowels << "o"
+	$vowels << "u"
+	$vowels
+	new_vowels = $vowels
+	new_vowels.rotate!
+	# new_vowels_index = $vowels.index(letter)
+	# new_vowels_index ==
 	
 end
 
+
 #moves consonants forward one character
-def new_consonants(letter)
+def new_consonants(array)
 	consonants = "bcdfghjklmnpqrstvwxyz".split('')
 	consonants.class
 	new_consonants = consonants.rotate!
-	new_consonants.join('')
-	
 end
 
 #combines the new_vowels and new_consonants methods for use
 
-def alter_letters(letter_array)
-	letter_array.map! { |letter|
-		$vowels.include?(letter) ? letter = new_vowels(letter)
-				 :
-		
-	letter_array.map! {|letter| letter = new_consonants(letter)
-				 }
-
-		# name[0].upcase!
-		alias_array = letter_array.join('')}
-			 
+def alter_letters(array)
+	array.map! { |letter|
+		$vowels.include?(letter) ? letter = new_vowels(letter) : letter = new_consonants(letter)
+	}
+	
+	new_alias = array.join('')
+	return new_alias
+	
 end
 
 #Generate new names
