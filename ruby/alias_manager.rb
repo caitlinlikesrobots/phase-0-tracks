@@ -26,8 +26,6 @@ def new_vowels(array)
 	$vowels
 	new_vowels = $vowels
 	new_vowels.rotate!
-	# new_vowels_index = $vowels.index(letter)
-	# new_vowels_index ==
 	
 end
 
@@ -46,7 +44,9 @@ def alter_letters(array)
 		$vowels.include?(letter) ? letter = new_vowels(letter) : letter = new_consonants(letter)
 	}
 	
-	new_alias = array.join('')
+	new_alias_first = array[1].join('')
+	new_alias_last = array[0].join('')
+	new_alias = new_alias_first + new_alias_last
 	return new_alias
 	
 end
