@@ -6,73 +6,54 @@
 	* in this instance, y will be a consonant
 =end
 
-# first_name = gets.chomp.downcase and made into array
-# last_name = gets.chomp.downcase and made into array
 
-
-#vowels needs to be a global variable here due to the frequency 
-#of its use
-$vowels = "aeiou"
-consonants = "bcdfghjklmnpqrstvwxyz"
-
-#moves vowels forward one character
-def new_vowels(array)
-	$vowels = []
-	$vowels << "a"
-	$vowels << "e"
-	$vowels << "i"
-	$vowels << "o"
-	$vowels << "u"
-	$vowels
-	new_vowels = $vowels
-	new_vowels.rotate!
 	
+
+#Swaps first and last names and turns them into arrays
+def alias_generator(agent)
+
+# changes vowels into array and uses .rotate method to account 
+# for edge cases
+	vowels = "aeiou"
+	new_vowels = "aeiou".split('').rotate!
+
+# changes consonants into array and uses .rotate method to account
+# for edge cases
+	consonants = "bcdfghjklmnpqrstvwxyz"
+	new_consonants = "bcdfghjklmnpqrstvwxyz".split('').rotate!
+
+# defines variables for user input and parameter
+	real_name = agent
+
+# swaps first and last names and turns them into arrays 
+	reversed_real_name = real_name.downcase.split(' ').reverse
+   	alias_name_array = reversed_real_name.join(" ").split("")
+
+ # maps the new array through the indices of the vowel and consonant arrays
+ 	altered_name =  alias_name_array.map do |letter| 
+        if vowels.include?(letter)
+            # if there is a vowel, it will map to the next vowel
+            new_vowels[new_vowels.index(letter)+1]
+        elsif consonants.include?(letter)
+            # if there is a consonant, it will map to the next consonant
+            new_consonants[new_consonants.index(letter)+1]
+        else
+            # accounts for space or another character
+            letter
+        end
+    end 
+
+# takes the newly mapped array, joins it back together and capitalizes it
+	new_alias = altered_name.join.split.map { |name| name.capitalize }.join(" ")
 end
 
 
-#moves consonants forward one character
-def new_consonants(array)
-	consonants = "bcdfghjklmnpqrstvwxyz".split('')
-	consonants.class
-	new_consonants = consonants.rotate!
-end
-
-#combines the new_vowels and new_consonants methods for use
-
-def alter_letters(array)
-	array.map! { |letter|
-		$vowels.include?(letter) ? letter = new_vowels(letter) : letter = new_consonants(letter)
-	}
+agent_name = " "
 	
-	new_alias_first = array[1].join('')
-	new_alias_last = array[0].join('')
-	new_alias = new_alias_first + new_alias_last
-	return new_alias
-	
-end
+puts "Hello agent. What is your first and last name?"
+	agent_name = gets.chomp
 
-#Generate new names
-
-def alias_generator
-	puts "Hello agent. What is your first and last name?"
-# first_name = gets.chomp.downcase and made into array
-# last_name = gets.chomp.downcase and made into array
-	name = gets.chomp.downcase.split(" ")
-#swaps first and last names
-	name.reverse!
-#separates last and first names and split into arrays
-	first_name = name[0].split('')
-	last_name = name[1].split('')
-#provides new alias with alter_letters method
-	new_alias = "#{alter_letters(first_name)} #{alter_letters(last_name)}"
-	yield(new_alias)
-end
-alias_generator {|new_alias| puts "Your new alias is #{new_alias}."}
-
-
-
-
-
-
+print "Your alias is now #{alias_generator(agent_name)}."
+	 
 
 
