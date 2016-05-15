@@ -46,7 +46,7 @@ def alias_generator(agent)
 end
 
 #defines the agent name variabble as a string
-agent_name = gets.chomp
+agent_name = ""
 new_agent_name = alias_generator(agent_name)
 
 
