@@ -6,9 +6,6 @@
 	* in this instance, y will be a consonant
 =end
 
-
-	
-
 #Swaps first and last names and turns them into arrays
 def alias_generator(agent)
 
@@ -27,33 +24,32 @@ def alias_generator(agent)
 
 # swaps first and last names and turns them into arrays 
 	reversed_real_name = real_name.downcase.split(' ').reverse
-   	alias_name_array = reversed_real_name.join(" ").split("")
+   	alias_name_array = reversed_real_name.join(' ').split('')
 
  # maps the new array through the indices of the vowel and consonant arrays
- 	altered_name =  alias_name_array.map do |letter| 
-        if vowels.include?(letter)
+ 	altered_name =  alias_name_array.map do |char| 
+        if vowels.include?(char)
             # if there is a vowel, it will map to the next vowel
-            new_vowels[new_vowels.index(letter)+1]
-        elsif consonants.include?(letter)
+            new_vowels[new_vowels.index(char)+-1]
+        elsif consonants.include?(char)
             # if there is a consonant, it will map to the next consonant
-            new_consonants[new_consonants.index(letter)+1]
+            new_consonants[new_consonants.index(char)+-1]
         else
             # accounts for space or another character
-            letter
+            char
         end
     end 
 
 # takes the newly mapped array, joins it back together and capitalizes it
-	new_alias = altered_name.join.split.map { |name| name.capitalize }.join(" ")
+	new_alias = altered_name.join.split.map!{ |name| name.capitalize }.join(" ")
 end
 
 
-agent_name = " "
+agent_name = ""
 	
 puts "Hello agent. What is your first and last name?"
 	agent_name = gets.chomp
 
 print "Your alias is now #{alias_generator(agent_name)}."
 	 
-
 
