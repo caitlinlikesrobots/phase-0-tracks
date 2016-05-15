@@ -46,9 +46,10 @@ def alias_generator(agent)
 end
 
 #defines the agent name variabble as a string
-agent_name = ""
-agent = ""
-n = "n"
+agent_name = gets.chomp
+new_agent_name = alias_generator(agent_name)
+
+
 # loop that prompts the agent for names
 	
 puts "Hello agent. What names would you like processed? \n Press '0' when you are done. \n"
@@ -66,9 +67,9 @@ puts "#{agent_name} is now #{alias_generator(agent_name)}."
 	end
 
 # final printing hash (NEED HELP WITH THIS!)
-# print agent_list.each { |alias_generator(agent_name), agent_name| puts "#{new_name} is actually #{name}"}
-
+print agent_list.each {  |agent_name, new_agent_name | puts "puts #{agent_name} is now #{alias_generator(agent_name)}."}
 end
+
 
 
 		
