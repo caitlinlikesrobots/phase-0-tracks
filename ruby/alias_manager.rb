@@ -56,4 +56,3 @@ puts "Hello agent. What is your first and last name?"
 print "Your alias is now #{alias_generator(agent_name)}."
 	 
 
-
