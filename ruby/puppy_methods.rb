@@ -45,7 +45,23 @@ class Robot_Army
 	def initialize
 		puts "Initializing new robot army instance..."
   	end
+
+  	def robo_speak
+  		puts "Beep bloop bleep!"
+  	end
+
+  	def robo_swim
+  		puts "Robot army able to swim!"
+  	end
 end
 
+robo_array = []
 
+
+base_name = "robot"
+robot_num = 50
+robot_num.times do |x|
+	robo_array[base_name + x.to_s]
+end
+p robo_array
 
