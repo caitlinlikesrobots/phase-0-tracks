@@ -22,7 +22,7 @@ Frisbee all star
 class Puppy
 	# names the species with design
 	print " SPECIES:\n Canis lateus amplexus"
-	# prints characteristics in hash
+	# create and prints characteristics in hash
 	print "\n ----------------------- \n CHARACTERISTICS \n ----------------------- \n"
 	pup_details = {"Hugs" => 8, 
 					"Friendly" => true, 
@@ -34,7 +34,7 @@ class Puppy
 	pup_details.each do |characteristic, specialty|
 		puts "#{characteristic}: #{specialty}"
 	end
-	# prints behavior in array
+	# create and prints behavior in array
 	print "\n ----------------------- \n BEHAVIOR \n ----------------------- \n"
 	pup_behavior = ["Quiet", "Hug", "Frisbee superstar", "Snuggler"]
 	puts pup_behavior

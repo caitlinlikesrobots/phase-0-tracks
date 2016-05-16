@@ -61,7 +61,7 @@ robo_array = []
 base_name = "robot"
 robot_num = 50
 robot_num.times do |x|
-	robo_array[base_name + x.to_s]
+	robo_array[x] = base_name + x.to_s
 end
 p robo_array
 
