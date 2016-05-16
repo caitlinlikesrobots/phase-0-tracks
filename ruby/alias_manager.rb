@@ -7,6 +7,7 @@
 =end
 # create hash for agents
 agent_list = {}
+
 #Swaps first and last names and turns them into arrays
 def alias_generator(agent)
 
@@ -65,6 +66,7 @@ puts "#{agent_name} is now #{alias_generator(agent_name)}."
 		print "Thank you. Good luck and Godspeed, agent."
 		break
 	end
+
 
 # final printing hash (NEED HELP WITH THIS!)
 print agent_list.each {  |agent_name, new_agent_name | puts "puts #{agent_name} is now #{alias_generator(agent_name)}."}
