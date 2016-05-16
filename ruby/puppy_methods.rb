@@ -39,7 +39,7 @@ scruffy.sit_pretty
 
 
 # Release 2
-
+# This is a robot army that can speak and swim together!
 class Robot_Army
 
 	def initialize
@@ -55,13 +55,20 @@ class Robot_Army
   	end
 end
 
-robo_array = []
+# Creates hash for Robot_Army instances
+robo_hash = {}
 
-
+# Populating the hash with instances 
 base_name = "robot"
 robot_num = 50
 robot_num.times do |x|
-	robo_array[x] = base_name + x.to_s
+	robo_hash[base_name + x.to_s] = Robot_Army.new
 end
-p robo_array
+
+# Calling the instance methods for every instance
+robo_hash.each do |robo_name, robo_instance|
+		 puts robo_name
+		 robo_instance.robo_speak
+		 robo_instance.robo_swim
+end
 
