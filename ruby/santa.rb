@@ -1,8 +1,7 @@
 class Santa 
 	
-	def initialize(gender, ethnicity)
+	def initialize(gender)
 		@gender = gender
-		@ethnicity = ethnicity
 		@reindeer_ranking = ["Rudolph", 
 							 "Dasher", 
 							 "Dancer", 
@@ -15,6 +14,10 @@ class Santa
 		@age = 0
 	end
 
+	def intialize(ethnicity)
+		@ethnicity = ethnicity
+	end
+
 	def speak
 		puts "Ho, ho, ho! Haaaappy holidays!"
 	end
@@ -25,18 +28,38 @@ class Santa
 	end
 end
 # create an array of genders
-genders = ["male", "female", "agender", "transfemale", "transmale", "Prince"]
+genders = ["male", 
+		   "female", 
+		   "agender", 
+		   "transfemale", 
+		   "transmale", 
+		   "Prince"]
 
 # create an array of ethnicities
-ethnicities = ["White", "Indo-European", "Afroasiatic", "Semitic", "Native American", "Prince"]
+ethnicities = ["White", 
+			   "Indo-European", 
+			   "Afroasiatic", 
+			   "Semitic", 
+			   "Native American", 
+			   "Prince"]
 
 # create an array of Santas
 santas = []
 
-puts "-----Iterating through santa attributes to identify Santa diversity-----\n"
+puts "-----Iterating through Santa attributes to identify Santa diversity-----\n"
 
-gender.each do |gender|
 
+genders.each do |gender|
+	puts "I'm Santa and my gender is #{gender}."
+	santas << Santa.new(gender)
+	puts "-------------------------------------"
+end
+
+ethnicities.each do |ethnicity|
+	puts "I'm Santa and my ethnicity is #{ethnicity}."
+	santas << Santa.new(ethnicity)
+	puts "-------------------------------------"
+end
 
 santa = Santa.new
 p santa.speak
