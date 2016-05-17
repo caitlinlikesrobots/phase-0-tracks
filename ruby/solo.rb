@@ -9,6 +9,8 @@ Perfect Pet will also have three methods:
 	*high-five your Perfect Pet
 Create Perfect Pet User App to make your pet truly Perfect!
 =end
+# Clear screen
+system 'clear'
 #Create Array for Perfect Pet information
 $perfect_pets = Array.new
 
