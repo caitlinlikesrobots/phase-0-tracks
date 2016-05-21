@@ -101,3 +101,29 @@ quantity_update(shopping_list, "icecream", 4)
 remove_item(shopping_list, "lemonade")
 quantity_update(shopping_list, "icecream", 1)
 p list_printer(shopping_list)
+
+
+=begin What did you learn about pseudocode from working on this challenge?
+
+  I learned that large blocks of code are placed at the top in order to keep readablity. Also, 
+  I realized that the more generalized in specificity your pseudocode is, the less likely
+  it will be outdated as immediately. 
+
+What are the tradeoffs of using arrays and hashes for this challenge?
+
+  Using the array to create the list made it easier to iterate through that list and update the 
+  hash with given quantities. 
+
+What does a method return?
+  Methods returns the modifications made to the parameters by the arguments presented in the method. 
+
+What kind of things can you pass into methods as arguments?
+  You can pass calculations, other methods, print statements, get input, comparisons... etc. 
+
+How can you pass information between methods?
+  Return the information using the return statement. 
+
+What concepts were solidified in this challenge, and what concepts are still confusing?
+  A lot of the syntax was cleared up for me here, but I am still getting my head around the inferences
+  that Ruby seems to make inherently as a language. 
+=end

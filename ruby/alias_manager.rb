@@ -5,8 +5,7 @@
 	* consonants moved forward one character
 	* in this instance, y will be a consonant
 =end
-# create hash for agents
-agent_list = {}
+
 
 #Swaps first and last names and turns them into arrays
 def alias_generator(agent)
@@ -32,10 +31,10 @@ def alias_generator(agent)
  	altered_name =  alias_name_array.map do |char| 
         if vowels.include?(char)
             # if there is a vowel, it will map to the next vowel
-            new_vowels[new_vowels.index(char)+-1]
+            new_vowels[new_vowels.index(char)+1]
         elsif consonants.include?(char)
             # if there is a consonant, it will map to the next consonant
-            new_consonants[new_consonants.index(char)+-1]
+            new_consonants[new_consonants.index(char)+1]
         else
             # accounts for space or another character
             char
@@ -46,31 +45,25 @@ def alias_generator(agent)
 	new_alias = altered_name.join.split.map!{ |name| name.capitalize }.join(" ")
 end
 
-#defines the agent name variabble as a string
-agent_name = ""
-new_agent_name = alias_generator(agent_name)
 
+#creat hash for agent names
+aliases = {}
 
-# loop that prompts the agent for names
-	
-puts "Hello agent. What names would you like processed? \n Press '0' when you are done. \n"
-agent_name = gets.chomp
-puts "#{agent_name} is now #{alias_generator(agent_name)}."
-	while agent_name != "0"
-		puts "Enter a new name."
+puts "Hello agent. What names would you like processed?"
+	agent_name = gets.chomp
+	p aliases[agent_name.to_sym] = alias_generator(agent_name)
+		
+# ends the loop 
+	while agent_name != "quit"
+		puts "Enter a new name or enter 'quit'."
 		agent_name = gets.chomp
-		puts "#{agent_name} is now #{alias_generator(agent_name)}."
-
-# ends the loop (awkwardly)
-	if agent_name == "0"
-		print "Thank you. Good luck and Godspeed, agent."
-		break
+		p aliases[agent_name.to_sym] = alias_generator(agent_name)
 	end
 
 
 # final printing hash (NEED HELP WITH THIS!)
-print agent_list.each {  |agent_name, new_agent_name | puts "puts #{agent_name} is now #{alias_generator(agent_name)}."}
-end
+aliases.each { |agent_name, new_alias| puts "puts #{agent_name} is now #{new_alias}."}
+
 
 
 
