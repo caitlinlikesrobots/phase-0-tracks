@@ -107,8 +107,7 @@ puts "Would you like to create another Perfect Pet™? \n(Enter 'yes' to make a 
 	end	 
 end
 
-#------------* Prints Pets Made *------------
-# Clear screen
+#------------* Prints Pets Made *----------
 system 'clear'
 Perfect_Pet do |pet|
 puts "Your Perfect Pet is #{@name} who is #{@color}\n and their birthday is #{@birthday}!"
