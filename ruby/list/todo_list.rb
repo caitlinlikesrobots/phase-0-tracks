@@ -7,7 +7,7 @@ class TodoList
 		@list
 	end
 
-	def add_items(new_item
+	def add_items(new_item)
 		@list.push(new_item)
 	end
 
