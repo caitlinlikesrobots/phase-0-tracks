@@ -121,7 +121,9 @@ What kind of things can you pass into methods as arguments?
   You can pass calculations, other methods, print statements, get input, comparisons... etc. 
 
 How can you pass information between methods?
-  Return the information using the return statement. 
+
+  use instance variables rather than local variables to pass that information throughout the object methods. 
+
 
 What concepts were solidified in this challenge, and what concepts are still confusing?
   A lot of the syntax was cleared up for me here, but I am still getting my head around the inferences
