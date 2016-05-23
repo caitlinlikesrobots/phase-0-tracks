@@ -1,4 +1,3 @@
-
 =begin SPECIES ------------------------
 Canis lateus amplexus
 

@@ -45,14 +45,14 @@ ethnicities = ["White",
 			   "Native American", 
 			   "Prince"]
 
-puts "-----Iterating through Santa attributes to identify Santa diversity!-----\n"
+
 10_000.times { 
 	santa = Santa.new(genders.sample, ethnicities.sample)
 	p santa.gender
 	p santa.ethnicity
-	p santa.age = rand(0..140)
-}
-
+	p santa.age = rand(140)
+ }
+puts "-----Iterating through Santa attributes to identify Santa diversity!-----\n"
 
 =begin attempted loop through gender and ethnicity arrays
 # create an array of diverse Santas
