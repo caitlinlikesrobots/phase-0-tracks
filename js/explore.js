@@ -11,4 +11,11 @@ function reverseString(str) {
 }
 // expected value will be "olleh"
 console.log (reverseString("hello"))
+// IF statement that will print if true
+// declare statement
+var javaIsFun = true
+if (javaIsFun) {
 console.log (reverseString("This is fun!"))
+} else {
+	console.log ("Sorry this is a normal string!")
+}
