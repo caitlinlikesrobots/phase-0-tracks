@@ -12,4 +12,3 @@ function reverseString(str) {
 // expected value will be "olleh"
 console.log (reverseString("hello"))
 console.log (reverseString("This is fun!"))
-
