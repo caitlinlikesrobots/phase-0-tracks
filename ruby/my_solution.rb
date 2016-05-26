@@ -89,3 +89,23 @@ end
 
 #=======================================================================
 # Reflection Section
+=begin
+What are the differences between the two different hash syntaxes shown in the state_data file?
+  The immediate difference is the constant variable of STATE_DATA (recognized by the caps) that allows the hash to be accessed globally
+  and not changed within the program. 
+  Also, in this case of a nested hash, we have a key (state) that is a string and rocket to the hash of keys and values and then two other 
+  keys within each state hash that takes symbols (population and population density) and allows the user to access those keys more easily. 
+What does require_relative do? How is it different from require?
+  require_relative links the ruby program to the STATE_DATA hash in a way that allows the program to access that information implicitly. 
+  require is a method that allows the ruby program to access outside single features that exist in the load path (which needs to be explicitly written) 
+  of your ruby library. 
+What are some ways to iterate through a hash?
+  .each, .keys, .values are all ways to iterate through a hash in each peculiar way. 
+When refactoring virus_effects, what stood out to you about the variables, if anything?
+  since the variables for virus_effects were actually attributes witin the class, they weren't needed as arguments for this method. 
+What concept did you most solidify in this challenge?
+  I got to a clearer understanding of iteration in this challenge, and I learned about other conditional statements such as case. 
+
+
+
+
