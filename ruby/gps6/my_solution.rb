@@ -49,14 +49,16 @@ private
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
      case @population_density 
-     when 200..150
-      speed += 0.5
-     when 149..100
-      speed += 1
-     when 99..50
-      speed += 1.5
-     else 
+     when 150..200
+      speed = 0.5
+     when 100..149
+      speed = 1
+     when 50..99
+      speed = 1.5
+    when 49..0
       speed = 2
+     else 
+      speed = 2.5
     end
 
     puts " and will spread across the state in #{speed} months.\n\n"
@@ -105,3 +107,4 @@ When refactoring virus_effects, what stood out to you about the variables, if an
   since the variables for virus_effects were actually attributes witin the class, they weren't needed as arguments for this method. 
 What concept did you most solidify in this challenge?
   I got to a clearer understanding of iteration in this challenge, and I learned about other conditional statements such as case. 
+=end
