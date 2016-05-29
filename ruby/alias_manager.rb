@@ -31,10 +31,10 @@ def alias_generator(agent)
  	altered_name =  alias_name_array.map do |char| 
         if vowels.include?(char)
             # if there is a vowel, it will map to the next vowel
-            new_vowels[new_vowels.index(char)+1]
+            new_vowels[new_vowels.index(char).next]
         elsif consonants.include?(char)
             # if there is a consonant, it will map to the next consonant
-            new_consonants[new_consonants.index(char)+1]
+            new_consonants[new_consonants.index(char).next]
         else
             # accounts for space or another character
             char
