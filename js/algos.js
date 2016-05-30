@@ -99,7 +99,8 @@ console.log(LongestWord(["egg","fun"]));
 // will need to iterate through object 1 in search of EACH key-value match in object 2
 // IF key-value pair has a match, the function will RETURN true, else it will RETURN false
 
-function MatchingKeyValue (object1, object2){
+//-----------------------Code Graveyard For Learning-----------------------//
+// function MatchingKeyValue (object1, object2){
 // 	var object1 = {
 // 	"car":"race", 
 // 	"basketball":"game",
@@ -121,6 +122,8 @@ function MatchingKeyValue (object1, object2){
 // 		}
 // 	}
 // }	return false
+
+function MatchingKeyValue (object1, object2){
     for (var i in object1) {
         for (var l in object2) {
         //checks keys
@@ -157,7 +160,7 @@ console.log(MatchingKeyValue(object2, object3));
 // RETURNS and array of random words that is the given length
 // for EACH word generate a random length
 // use Math.floor((Math.random() * 10) + 1); to generate random number for word length
-// use String.fromCharCode(94 + l) to return random ASCII value of letter in order 
+// use String.fromCharCode(93 + l) to return random ASCII value of letter in order 
 // to convert that letter into a random string
 // push words into randomArray
 // RETURN randomArray
@@ -171,8 +174,8 @@ function TestMaster(randomArraylength){
 		for (l = 0; l < randWordLength; l++){
 				// if(l>=3){ //I think this was disrupting the random operation
 					// I added 93, which starts us at the value of 'a'
-				var asciiLetter = Math.floor((Math.random() * 10) + 1);
-    			randLetter = String.fromCharCode(94 + l);
+				var asciiLetter = (Math.random()+1);
+    			randLetter = String.fromCharCode(93 + l);
     			randWord += randLetter;
 			}
 		randomArray.push(randWord);
@@ -180,8 +183,9 @@ function TestMaster(randomArraylength){
 	return randomArray;
 }
 //-------------------------DRIVER CODE-------------------------//
+// loop to do ten times and feed to LongestWord function
 for (var w = 0; w < 10; w++){
-	var randomArray = TestMaster(7);
+	var randomArray = TestMaster(2);
 		console.log(randomArray);
 	var verbose = LongestWord(randomArray);
 		console.log(verbose);
