@@ -151,3 +151,38 @@ var object3 ={
 }
 console.log(MatchingKeyValue(object1, object2));
 console.log(MatchingKeyValue(object2, object3));
+
+//-------------------------Random Test Data-------------------------//
+// Create a function that takes and INTEGER for LENGTH
+// RETURNS and array of random words that is the given length
+// for EACH word generate a random length
+// use Math.floor((Math.random() * 10) + 1); to generate random number for word length
+// use String.fromCharCode(94 + l) to return random ASCII value of letter in order 
+// to convert that letter into a random string
+// push words into randomArray
+// RETURN randomArray
+
+function TestMaster(randomArraylength){
+	var randomArray = [];
+	for (var i = 0; i < randomArraylength; i++){ 
+		// things got weird and don't seem random...
+		var randWordLength = Math.floor((Math.random() * 10) + 1);
+		var randWord = "";
+		for (l = 0; l < randWordLength; l++){
+				// if(l>=3){ //I think this was disrupting the random operation
+					// I added 93, which starts us at the value of 'a'
+				var asciiLetter = Math.floor((Math.random() * 10) + 1);
+    			randLetter = String.fromCharCode(94 + l);
+    			randWord += randLetter;
+			}
+		randomArray.push(randWord);
+		}
+	return randomArray;
+}
+//-------------------------DRIVER CODE-------------------------//
+for (var w = 0; w < 10; w++){
+	var randomArray = TestMaster(7);
+		console.log(randomArray);
+	var verbose = LongestWord(randomArray);
+		console.log(verbose);
+}
