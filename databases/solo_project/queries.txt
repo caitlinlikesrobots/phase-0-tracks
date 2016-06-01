@@ -1,0 +1,63 @@
+1. Display the information from guestlist table:
+
+sqlite> SELECT * FROM guestlist;
+1|Grayson Bagwell|Grayman|2|true|2
+2|Louis CK|Louie|0|true|1
+3|Cleopatra|Cleo|3|true|2
+4|Genghis Khan|Gigi|1000|false|1
+5|Emily Dickinson|Fly-girl|0|false|2
+
+2. Update an item (friendly)
+
+sqlite> SELECT * FROM guestlist;
+1|Grayson Bagwell|Grayman|2|true|2
+2|Louis CK|Louie|0|true|1
+3|Cleopatra|Cleo|3|true|2
+4|Genghis Khan|Gigi|1000|false|1
+5|Emily Dickinson|Fly-girl|0|true|2
+
+3. Display information in both tables using one query
+
+sqlite> SELECT * FROM guestlist, cakechoice WHERE guestlist.cake_id=cakechoice.id;
+1|Grayson Bagwell|Grayman|2|true|2|2|Cheesecake
+2|Louis CK|Louie|0|true|1|1|Funfetti
+3|Cleopatra|Cleo|3|true|2|2|Cheesecake
+4|Genghis Khan|Gigi|1000|false|1|1|Funfetti
+5|Emily Dickinson|Fly-girl|0|true|2|2|Cheesecake
+
+4. Display a narrower selection of columns using one query
+
+sqlite> SELECT guestlist.name, cakechoice.cake FROM guestlist JOIN cakechoice ON guestlist.cake_id = cakechoice.id;
+Grayson Bagwell|Cheesecake
+Louis CK|Funfetti
+Cleopatra|Cheesecake
+Genghis Khan|Funfetti
+Emily Dickinson|Cheesecake
+
+5. Delete an item that meets some condition (friends-only party, Gigi!)
+
+sqlite> DELETE FROM guestlist WHERE friendly="false";
+sqlite> SELECT * FROM guestlist;
+1|Grayson Bagwell|Grayman|2|true|2
+2|Louis CK|Louie|0|true|1
+3|Cleopatra|Cleo|3|true|2
+5|Emily Dickinson|Fly-girl|0|true|2
+
+6. Different JOINs
+
+* CROSS JOIN 
+sqlite> SELECT cake_id FROM guestlist CROSS JOIN cakechoice;
+2
+2
+1
+1
+2
+2
+2
+2
+
+* INNER JOIN
+sqlite> SELECT name FROM guestlist [INNER] JOIN cakechoice ON cake_id=1;
+Louis CK
+Louis CK
+
