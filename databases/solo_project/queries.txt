@@ -61,3 +61,9 @@ sqlite> SELECT name FROM guestlist [INNER] JOIN cakechoice ON cake_id=1;
 Louis CK
 Louis CK
 
+* LEFT OUTER JOIN
+sqlite> SELECT name FROM guestlist LEFT OUTER JOIN cakechoice ON guestlist.id=cakechoice.id;
+Grayson Bagwell
+Louis CK
+Cleopatra
+Emily Dickinson
