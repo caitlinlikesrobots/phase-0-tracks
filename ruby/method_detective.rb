@@ -29,8 +29,8 @@ puts "Stop! You’re under arrest!".upcase!
 puts "the usual" << " suspects"
 puts "the usual".concat(" susepcts")
 #=> "the usual suspects"
-# << shovel concatenates the string with the given string
-# .concat concatenates the string with the given string
+# << shovel concatenates the string with the given string as argument
+# .concat concatenates the string with the given string as argument
 
 puts " suspects" .prepend("the usual")
 # => "the usual suspects"
