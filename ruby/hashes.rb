@@ -32,13 +32,18 @@ puts "Do you want to keep that roof? [true/false]"
 p client_decor
 
 #prompts for possible changes
-puts "What changes you would like to make? Type [none] if you are satisfied."
-client_change = gets.chomp.to_sym
-if client_change!=:none
-	puts "What do you want to change?"
-	if client_decor.key?(client_change)
-		client_decor[client_change]=gets.chomp
-	end
+puts "What would you like to change? Type [none] if you are satisfied."
+change = gets.chomp
+
+if change == "none"
+
+else
+	puts "What is the updated information for #{change.to_sym}?"
+	client_update = gets.chomp
+	new_key = change.to_sym
+
+	#adjust for appropriate data type
+	client_decor[new_key].class == Fixnum ? client_decor[new_key] = client_update.to_i : client_decor[new_key] = client_update
 end
 
 #prints updated hash
