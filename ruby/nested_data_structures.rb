@@ -1,7 +1,9 @@
 # A Mansion Filled with Guests, Ghosts, and SpooOooky Times!
 
+# Create outer hash of Mansion 
 mansion = {
 
+# Create array of guests
 	guests: [
 		"Charlamagne Money", 
 		"Jessica Lightingale",
@@ -11,6 +13,7 @@ mansion = {
 		"his Pet Tiger, Leonard"
 	],
 
+# Create nested hash of ghosts 
 	ghosts: {
 		ghost1: {
 				name: "Henry", 
@@ -46,3 +49,4 @@ p mansion [:ghosts][:ghost1].fetch(:name)
 p mansion [:ghosts][:ghost3].values
 p mansion [:guests].rotate(2)
 p mansion [:ghosts][:ghost3].fetch(:activity)
+p mansion [:ghosts][:ghost1].fetch(:year_of_demise)
