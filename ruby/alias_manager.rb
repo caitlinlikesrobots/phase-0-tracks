@@ -54,10 +54,9 @@ puts "Hello agent. What names would you like processed? Enter 'quit' to finish"
 	agent_name = gets.chomp
 		# ends the loop 
 	p aliases[agent_name.to_sym] = alias_generator(agent_name)
-	puts "Enter a new name or enter 'quit'."
 	if agent_name != 'quit'
-		agent_name = gets.chomp
-		p aliases[agent_name.to_sym] = alias_generator(agent_name)
+		aliases[agent_name.to_sym] = alias_generator(agent_name)
+		alias_generator(agent_name)
 	else 
 		p "Thank you!"
 	end
