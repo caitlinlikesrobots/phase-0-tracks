@@ -15,4 +15,10 @@ p new_array
 
 p "It is #{new_array.include?("T.S. Eliot")} that T.S. Eliot is in new_array."
 
+second_array = ["Anne Carson", "Walt Whitman", "Shakespeare"]
+
+final_array = new_array << second_array
+
+p final_array
+
 
