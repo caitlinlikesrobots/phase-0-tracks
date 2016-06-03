@@ -13,12 +13,12 @@ def alias_generator(agent)
 # changes vowels into array and uses .rotate method to account 
 # for edge cases
 	vowels = "aeiou"
-	new_vowels = "aeiou".split('').rotate!
+	new_vowels = "aeiou".split('').reverse
 
 # changes consonants into array and uses .rotate method to account
 # for edge cases
 	consonants = "bcdfghjklmnpqrstvwxyz"
-	new_consonants = "bcdfghjklmnpqrstvwxyz".split('').rotate!
+	new_consonants = "bcdfghjklmnpqrstvwxyz".split('').reverse
 
 # defines variables for user input and parameter
 	real_name = agent
@@ -31,10 +31,10 @@ def alias_generator(agent)
  	altered_name =  alias_name_array.map do |char| 
         if vowels.include?(char)
             # if there is a vowel, it will map to the next vowel
-            new_vowels[new_vowels.index(char).next]
+            new_vowels[new_vowels.index(char)-1]
         elsif consonants.include?(char)
             # if there is a consonant, it will map to the next consonant
-            new_consonants[new_consonants.index(char).next]
+            new_consonants[new_consonants.index(char)-1]
         else
             # accounts for space or another character
             char
@@ -48,17 +48,20 @@ end
 
 #creat hash for agent names
 aliases = {}
-
-puts "Hello agent. What names would you like processed?"
+agent_name = ''
+while agent_name != 'quit'
+puts "Hello agent. What names would you like processed? Enter 'quit' to finish"
 	agent_name = gets.chomp
+		# ends the loop 
 	p aliases[agent_name.to_sym] = alias_generator(agent_name)
-		
-# ends the loop 
-	while agent_name != "quit"
-		puts "Enter a new name or enter 'quit'."
+	puts "Enter a new name or enter 'quit'."
+	if agent_name != 'quit'
 		agent_name = gets.chomp
 		p aliases[agent_name.to_sym] = alias_generator(agent_name)
+	else 
+		p "Thank you!"
 	end
+
 
 
 # final printing hash (NEED HELP WITH THIS!)
