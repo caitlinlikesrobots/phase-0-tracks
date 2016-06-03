@@ -12,3 +12,7 @@ p new_array
 
 new_array.delete("J.K. Rowling")
 p new_array
+
+p "It is #{new_array.include?("T.S. Eliot")} that T.S. Eliot is in new_array."
+
+
