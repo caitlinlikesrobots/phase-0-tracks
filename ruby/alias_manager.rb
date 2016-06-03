@@ -52,12 +52,8 @@ agent_name = ''
 while agent_name != 'quit'
 puts "Hello agent. What names would you like processed? Enter 'quit' to finish"
 	agent_name = gets.chomp
-		# ends the loop 
-	p aliases[agent_name.to_sym] = alias_generator(agent_name)
-	puts "Enter a new name or enter 'quit'."
 	if agent_name != 'quit'
-		agent_name = gets.chomp
-		p aliases[agent_name.to_sym] = alias_generator(agent_name)
+		aliases[agent_name.to_sym] = alias_generator(agent_name)
 	else 
 		p "Thank you!"
 	end
@@ -66,7 +62,7 @@ end
 
 
 # final printing hash (NEED HELP WITH THIS!)
-aliases.each { |agent_name, new_alias| puts "puts #{agent_name} is now #{new_alias}."}
+aliases.each { |agent_name, new_alias| puts "#{agent_name} is now #{new_alias}."}
 
 
 
