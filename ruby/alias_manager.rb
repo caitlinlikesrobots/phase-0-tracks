@@ -10,12 +10,12 @@
 #Swaps first and last names and turns them into arrays
 def alias_generator(agent)
 
-# changes vowels into array and uses .rotate method to account 
+# changes vowels into array and uses .reverse method to account 
 # for edge cases
 	vowels = "aeiou"
 	new_vowels = "aeiou".split('').reverse
 
-# changes consonants into array and uses .rotate method to account
+# changes consonants into array and uses .reverse method to account
 # for edge cases
 	consonants = "bcdfghjklmnpqrstvwxyz"
 	new_consonants = "bcdfghjklmnpqrstvwxyz".split('').reverse
@@ -61,6 +61,7 @@ puts "Hello agent. What names would you like processed? Enter 'quit' to finish"
 	else 
 		p "Thank you!"
 	end
+end
 
 
 
