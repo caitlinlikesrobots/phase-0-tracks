@@ -55,7 +55,7 @@ puts "Hello agent. What names would you like processed? Enter 'quit' to finish"
 	if agent_name != 'quit'
 		aliases[agent_name.to_sym] = alias_generator(agent_name)
 	else 
-		p "Thank you!"
+		puts "Thank you!"
 	end
 end
 

@@ -1,4 +1,3 @@
-
 var colors = ["pink", "rainbow", "bronze", "sky blue"];
 var names = ["Charles", "Daisy", "JZebra", "Horace"];
 colors.push("aquamarine");
@@ -7,12 +6,13 @@ var horses ={};
 for (var i = 0; i < colors.length; i++) {
   horses[names[i]] = colors[i];
 }
+
 console.log(horses);
 for (var key in horses){
   if (horses.hasOwnProperty(key)){
     console.log(key + ": " + horses[key]);
   }
-}
+
 
 console.log("____________");
 
