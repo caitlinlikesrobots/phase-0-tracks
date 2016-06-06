@@ -17,6 +17,7 @@ Hug
 Frisbee all star
 =end
 
+
 #defines new puppy class
 class Puppy
 	# names the species with design
