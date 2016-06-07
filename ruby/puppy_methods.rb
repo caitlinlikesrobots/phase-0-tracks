@@ -1,7 +1,7 @@
 class Puppy
 
   def initialize
-  	puts "Initializing new puppy instance..."
+     puts "Initializing new puppy instance..."
   end
 
   def fetch(toy)
@@ -9,66 +9,51 @@ class Puppy
     toy
   end
 
-  def speak(i)
-  	i.times { puts "Woof!" }
+  def speak(number_of_woofs)
+    number_of_woofs.times { puts "Woof!" }
   end
 
   def roll_over
-  	puts "*rolls over*"
-  end 
-
-  def dog_years(human_years)
-  	puts human_years / 7
+    puts "*rolls over*"
   end
 
-  def sit_pretty
-  	puts "I am sitting pretty"
+  def dog_years(human_age)
+    7 * human_age
+  end
+
+  def play_dead
+    puts "..."
   end
 
 end
 
-# initialize new instance of Puppy class
-scruffy = Puppy.new
+# spike = Puppy.new
+# spike.fetch("ball")
+# spike.speak(3)
+# spike.roll_over
+# p spike.dog_years(10)
+# spike.play_dead
 
-# verification of Scruffy's ability to fetch
-scruffy.fetch("sock")
-scruffy.speak(3)
-scruffy.roll_over
-scruffy.dog_years(50)
-scruffy.sit_pretty
+class Ghost 
 
+  def initialize
+    
+  end
 
-# Release 2
-# This is a robot army that can speak and swim together!
-class Robot_Army
+  def haunt
+    puts "I'm here to haunt you."
+  end
 
-	def initialize
-		puts "Initializing new robot army instance..."
-  	end
+  def appear
+    puts "A ghost appears in the mirror behind you."
+  end
 
-  	def robo_speak
-  		puts "Beep bloop bleep!"
-  	end
-
-  	def robo_swim
-  		puts "Robot army able to swim!"
-  	end
 end
 
-# Creates hash for Robot_Army instances
-robo_hash = {}
+ghost_array = []
+50.times { |index| ghost_array[index] = Ghost.new } 
 
-# Populating the hash with instances 
-base_name = "robot"
-robot_num = 50
-robot_num.times do |x|
-	robo_hash[base_name + x.to_s] = Robot_Army.new
+ghost_array.each do |ghostie|
+  ghostie.appear
+  ghostie.haunt
 end
-
-# Calling the instance methods for every instance
-robo_hash.each do |robo_name, robo_instance|
-		 puts robo_name
-		 robo_instance.robo_speak
-		 robo_instance.robo_swim
-end
-
