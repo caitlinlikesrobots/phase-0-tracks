@@ -1,23 +1,30 @@
-class TodoList 
-	def intitialize(list)
-		@list = list
-	end
+class TodoList
+  attr_accessor :list
 
-	def get_items
-		@list
-	end
+  def initialize(list)
+    @list = list
+  end
 
-	def add_items(new_item)
-		@list.push(new_item)
-	end
+  def get_items
+    return @list
+  end
 
-	def delete_item(all_items)
-		all_items_index = @list.index(all_items)
-		@list.delete_at(all_items_index)
-	end
+  def add_item(item)
+    return @list << item
+  end
 
-	def retrieve_item(all_items)
-		all_items_index = @list.index(all_items)
-		@list.at(all_items_index)
-	end
+  def delete_item(item)
+    return @list.delete(item)
+  end
+
+  def get_item(index)
+    return @list[index]
+  end
 end
+
+# list = TodoList.new(["do the dishes", "mow the lawn"])
+# list.get_items
+# list.add_item("mop")
+# list.delete_item ("do the dishes")
+# list.get_item[0]
+

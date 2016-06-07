@@ -1,64 +1,78 @@
-def we_say_stuff
-	puts "WAZZUP!!!!!!!!!"
-	yield("Floppy Mc'Wobbletons")
+def greeting
+	puts "Hello!"
+	yield ("Jeff Goldblum")
+	puts "Have a great day!"
+end 
+
+greeting {|name| puts "So good to see you, #{name}!"}
+
+cities = ["San Francisco", "Clarksdale", "New York", "New Orleans"]
+p cities
+
+cities.each do |city|
+	puts "#{city} is the best!"
 end
+p cities
 
-we_say_stuff { |name| puts "great to see you #{name}"}
-
-zoo = ["walrus", "penguin", "polar bear", "human"]
-movie = { "scifi" => "Bladerunner", "horror" => "Army of Darkness", "comedy" => "Duck Soup", "drama" => "Gladiator" }
-
-zoo.each do |animal|
-	puts "There is a #{animal} in the zoo."
+cities.map! do |city|
+	city.reverse
 end
+p cities
 
-movie.each do |genre, movie|
-	puts "#{movie} is a #{genre} movie."
+famous_dead_people_songs = {"Prince" => "Purple Rain", 
+							"David Bowie" => "Starman", 
+							"Nirvana" => "Heart-Shaped Box", 
+							"Queen" => "Bohemian Rhapsody"}
+p famous_dead_people_songs
+
+famous_dead_people_songs.each do |artist, song|
+	puts "#{song} is #{artist}'s best work for sure."
 end
+p famous_dead_people_songs
 
-p zoo
+numbers = [1, 2, 3, 4, 5]
+numbers.delete_if{ |number| number > 3}
+p numbers
 
-zoo.map! do |animal|
-	animal.prepend("Evil ")
-end
+numbers_2 = [1, 2, 3, 4, 5]
+numbers_2.keep_if {|number| number>= 3}
+p numbers_2
 
-p zoo
+letters = [1, 2, 3, 4, 5]
+letters.select! {|letter| letter.odd?}
+p letters
 
-#1
-pain_level = [1, 2, 3, 4, 5]
-pain_level.delete_if { |pain| pain.even? }
-p pain_level
+numbers_3 = [1, 2, 3, 5, 8, 13, 21]
+numbers_3.drop_while {|number| number <= 5}
 
-ascii_char_hash = {"A" => 65, "B" => 68, "C" => 67}
-ascii_char_hash.delete_if {|char, dec_num| char.ord != dec_num}
-p ascii_char_hash
+hash_1 = {
+	"Chad" => 17,
+	"Shirley" => 40,
+	"Clark" => 29,
+	"Jessica" => 33
+}
+hash_1.delete_if {|name, age| age < 21}
 
-#2
-emotions_array = ["happy", "sad", "hangry", "nervous"]
-emotions_array.keep_if {|emotion| emotion.length > 5 }
-p emotions_array
+hash_2 = {
+	"Chad" => 16,
+	"Shirley" => 40,
+	"Clark" => 29,
+	"Jessica" => 33
+}
+hash_2.keep_if {|name, age| name != "Chad"}
 
+hash_3 = {
+	"Chad" => 16,
+	"Shirley" => 40,
+	"Clark" => 29,
+	"Jessica" => 30
+}
+hash_3.select! {|name, age| name == "Shirley"}
 
-music_hash = {"The Prodigy" => 10, "Lead Belly" => 9, "Gogol Bordello" => 9, "Prince" => 11}
-puts "Artists rated from 1-10 (10 being greatest)."
-music_hash.keep_if { |band, greatness| greatness >= 10 }
-p music_hash
-
-#3
-[1, 2, 3, 4, 5].product([6, 7, 8]){|p| p p}
-
-planet_distance = {"Mars" => 100, "Jupiter" => 420, "Saturn" => 825}
-puts "Distance is in bazillion miles."
-planet_distance.select! { |planet, distance| distance < 400 }
-p planet_distance
-
-#4
-frustration_level = [6, 7, 8, 9, 99999]
-frustration_level.reject! { |frustration| frustration < 9 }
-p frustration_level
-
-cuddle_buddies = {"Taquito" => 3, "Zemma" => 9, "Steve" => 8}
-cuddle_buddies.reject! { |pet, cuddlability| cuddlability < 7 }
-p cuddle_buddies
-
-
+hash_4 = {
+	"Chad" => 16,
+	"Shirley" => 40,
+	"Clark" => 29,
+	"Jessica" => 30
+}
+hash_4.reject! {|name, age| age%10 != 0}

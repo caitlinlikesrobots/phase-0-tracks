@@ -26,24 +26,33 @@ class Santa
 		reindeer_idx = @reindeer_ranking.index(reindeer_name)
 		return @reindeer_ranking.insert(-1, @reindeer_ranking.delete_at(reindeer_idx))
 	end
-# Setter method
-	def gender=(new_gender)
-		@gender = new_gender
-	end
-# Getter methods
-	def age 
-		@age
-	end
+# # Setter method
+# 	def gender=(new_gender)
+# 		@gender = new_gender
+# 	end
+# # Getter methods
+# 	def age 
+# 		@age
+# 	end
 
-	def ethnicity
-		@ethnicity
-	end
+# 	def ethnicity
+# 		@ethnicity
+# 	end
 end
 
 santa = Santa.new
 p santa.speak
 p santa.eat_milk_and_cookies("oatmeal")
 p santa.celebrate_birthday
+
+
+10_000.times { 
+	santa = Santa.new(genders.sample, ethnicities.sample)
+	p santa.gender
+	p santa.ethnicity
+	p santa.age = rand(140)
+ }
+puts "-----Iterating through Santa attributes to identify Santa diversity!-----\n"
 
 # santas = []
 # example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
