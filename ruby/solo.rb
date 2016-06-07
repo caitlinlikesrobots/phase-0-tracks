@@ -109,5 +109,3 @@ puts "Thank you very much.\nEnjoy your Perfect Pet™!"
 #------------* Prints Pets Made *----------
 system 'clear'
 pets.each {|pet| puts "Your Perfect Pet is #{pet.name} who is #{pet.color}\n and their birthday is #{pet.birthday}!"}
-
-
