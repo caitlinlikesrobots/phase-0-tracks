@@ -57,3 +57,29 @@ ghost_array.each do |ghostie|
   ghostie.appear
   ghostie.haunt
 end
+
+
+
+class Ghost 
+
+  def initialize
+    
+  end
+
+  def haunt
+    puts "I'm here to haunt you."
+  end
+
+  def appear
+    puts "A ghost appears in the mirror behind you."
+  end
+
+end
+
+ghost_array = []
+50.times { |index| ghost_array[index] = Ghost.new } 
+
+ghost_array.each do |ghostie|
+  ghostie.appear
+  ghostie.haunt
+end
