@@ -9,8 +9,8 @@ module Shout
   end
 end
 
-p Shout.yell_angrily("Dang it")
-p Shout.yelling_happily("Super great")
+p Shout.yell_angrily("Dadgum")
+p Shout.yelling_happily("Heck yeah")
 =end
 
 module Shout
