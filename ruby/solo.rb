@@ -12,15 +12,13 @@ Create Perfect Pet User App to make your pet truly Perfect!
 
 # Create Perfect Pet class
 class Perfect_Pet 
-	attr_reader :food
-	attr_accessor :name, :color, :birthday
+	attr_reader :birthday
+	attr_accessor :name, :color 
 
-	
 	def initialize(name, color, birthday)
 	@name = name
 	@color = color
 	@birthday = birthday
-	@food = food
 	end
 
 	def hug
@@ -34,14 +32,14 @@ class Perfect_Pet
 	def feed
 		pet_hungry = ""
 		while pet_hungry != "stop"
-			puts "Is your Perfect Pet™ hungry? It will eat anything you give it!\nEnter 'stop' when your Perfect Pet™ is full!"
+			puts "Is your Perfect Pet™ hungry? ('yes' or 'no') \nIt will eat anything you give it!\nEnter 'stop' when your Perfect Pet™ is full!"
 			pet_hungry = gets.chomp.downcase
 			if pet_hungry == "stop"
 				break
 			end
 			puts "What would you like to feed your Perfect Pet™?"
 			food = gets.chomp
-			puts "Your Perfect Pet™ ate a #{@food}."
+			puts "Your Perfect Pet™ ate a #{food}."
 		end
 		puts "Your Perfect Pet™ is stuffed!"
 	end
@@ -103,11 +101,12 @@ puts "You have a new Perfect Pet™!\n Best Friends!"
 
 pets << pet
 end
-puts "Thank you very much.\nEnjoy your Perfect Pet™!"
+
 
 
 #------------* Prints Pets Made *----------
 system 'clear'
+puts "Thank you very much.\nEnjoy your Perfect Pet™!"
 pets.each {|pet| puts "Your Perfect Pet is #{pet.name} who is #{pet.color}\n and their birthday is #{pet.birthday}!"}
 
 

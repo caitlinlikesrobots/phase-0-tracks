@@ -37,7 +37,7 @@ genders = ["male",
 		   "Prince"]
 
 # create an array of ethnicities
-ethnicities = ["White", 
+ethnicities = ["Latino", 
 			   "Indo-European", 
 			   "Afroasiatic", 
 			   "Semitic", 
@@ -47,7 +47,7 @@ ethnicities = ["White",
 
 1000.times { 
 	santa = Santa.new(genders.sample, ethnicities.sample)
-	puts "This Santa is #{santa.gender}, #{santa.ethnicity} and #{santa.age = rand(140)}."
+	puts "This Santa is #{santa.gender}, #{santa.ethnicity} and is #{santa.age = rand(140)} years old."
 	# p santa.get_mad_at("Vixen")
  }
 puts "-----Iterating through Santa attributes to identify Santa diversity!-----\n"
