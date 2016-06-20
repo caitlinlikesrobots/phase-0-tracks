@@ -10,12 +10,12 @@ function reverseString(str) {
     return str.split("").reverse().join("");
 }
 // expected value will be "olleh"
-console.log (reverseString("hello"))
+console.log (reverseString("hello"));
 // IF statement that will print if true
 // declare statement
-var javaIsFun = true
+var javaIsFun = true;
 if (javaIsFun) {
-console.log (reverseString("This is fun!"))
+console.log (reverseString("This is fun!"));
 } else {
-	console.log ("Sorry this is a normal string!")
+	console.log ("Sorry this is a normal string!");
 }
