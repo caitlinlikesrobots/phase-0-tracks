@@ -52,20 +52,27 @@ db.execute(create_activities_cmd)
 
 # Create methods for CRUD
 
-method to create a user
+# create a method to create a user
 def create_user(db, name, age, instagram)
-	db.execute("INSERT INTO users (name, age, instagram,) VALUES (?, ?, ?, ?)", [name, age, instagram, activity, location])
+	db.execute("INSERT INTO users (name, age, instagram) VALUES (?, ?, ?)", [name, age, instagram])
 end
 
-def bucketlist(db)
+# create a method to add activities
+def create_bucketlist(db, activity, comment, accomplished)
+	db.execute("INSERT INTO activities (activity, comment, accomplished) VALUES (?, ?, ?)", [activity, comment, accomplished])
+end
+
+def create_location(db, location)
+	db.execute("INSERT INTO locations (location) VALUES (?)", [location])
+end
 
 def display_user(db)
 	db.results_as_hash = true
 	display_users_cmd = <<-SQL
-		SELECT users.name, users.age, users.instagram, activities.activity_id, locations.location_id
-		FROM users 
-		JOIN user_id ON activities.user_id = users.id 
-		JOIN locations_id ON activities.location_id = locations.id
+		SELECT users.name, users.age, users.instagram, activities.user_id, activities.location_id, locations.location
+		FROM activities 
+		JOIN users ON activities.user_id = users.id 
+		JOIN locations ON activities.location_id = locations.id
 	SQL
 	display = db.execute(display_users_cmd)
 	display.each do |user|
@@ -74,7 +81,11 @@ def display_user(db)
 end
 
 # #-------------------------------DRIVER CODE-------------------------------#
-create_user("Caitlin Johnson", 30, "caitlinlikesyou")
+# create_user(db, "Caitlin Johnson", 30, "caitlinlikesyou")
+# create_bucketlist(db, "Go to Dollywood", "I've wanted to go since I saw 9 to 5.", 0)
+# create_location(db, 60608)
+p display_user(db)
+
 
 
 
