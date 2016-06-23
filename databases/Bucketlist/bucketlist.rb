@@ -20,11 +20,7 @@ create_users_cmd = <<-SQL
 		id INTEGER PRIMARY KEY,
 		name VARCHAR(255),
 		age INT,
-		instagram VARCHAR(255),
-		activity_id INT,
-		location_id INT,
-		FOREIGN KEY (activity_id) REFERENCES activites(id),
-		FOREIGN KEY (location_id) REFERENCES locations(id)
+		instagram VARCHAR(255)
 	);
 SQL
 # Create activities table for user bucket list information (id, activity, accomplished?)
@@ -32,7 +28,12 @@ create_activities_cmd = <<-SQL
 	CREATE TABLE IF NOT EXISTS activities(
 		id INTEGER PRIMARY KEY,
 		activity VARCHAR(255),
-		accomplished BOOLEAN
+		comment VARCHAR(255),
+		accomplished BOOLEAN,
+		user_id INT,
+		location_id INT,
+		FOREIGN KEY (user_id) REFERENCES users(id),
+		FOREIGN KEY (location_id) REFERENCES locations(id)
 	);
 SQL
 
@@ -51,18 +52,20 @@ db.execute(create_activities_cmd)
 
 # Create methods for CRUD
 
-# method to create a user
-def create_user(db, name, age, instagram, activity_id, location_id)
-	db.execute("INSERT INTO users (name, age, instagram, activity_id, location_id) VALUES (?, ?, ?, ?, ?)", [name, age, instagram, activity, location])
+method to create a user
+def create_user(db, name, age, instagram)
+	db.execute("INSERT INTO users (name, age, instagram,) VALUES (?, ?, ?, ?)", [name, age, instagram, activity, location])
 end
+
+def bucketlist(db)
 
 def display_user(db)
 	db.results_as_hash = true
 	display_users_cmd = <<-SQL
 		SELECT users.name, users.age, users.instagram, activities.activity_id, locations.location_id
 		FROM users 
-		JOIN activity_id ON users.activity_id = activity.id 
-		JOIN locations_id ON users.location_id = locations.id
+		JOIN user_id ON activities.user_id = users.id 
+		JOIN locations_id ON activities.location_id = locations.id
 	SQL
 	display = db.execute(display_users_cmd)
 	display.each do |user|
@@ -70,8 +73,8 @@ def display_user(db)
 	end
 end
 
-#-------------------------------DRIVER CODE-------------------------------#
-create_user("Caitlin Johnson", 30, "caitlinlikesyou", 1)
+# #-------------------------------DRIVER CODE-------------------------------#
+create_user("Caitlin Johnson", 30, "caitlinlikesyou")
 
 
 
