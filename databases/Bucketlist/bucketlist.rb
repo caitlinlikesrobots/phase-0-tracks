@@ -21,22 +21,22 @@ create_users_cmd = <<-SQL
 		name VARCHAR(255),
 		age INT,
 		instagram VARCHAR(255),
-		activity VARCHAR(255),
-		location INT,
-		FOREIGN KEY (activity) REFERENCES activites(id),
-		FOREIGN KEY (location) REFERENCES locations(id)
+		activity_id INT,
+		location_id INT,
+		FOREIGN KEY (activity_id) REFERENCES activites(id),
+		FOREIGN KEY (location_id) REFERENCES locations(id)
 	);
 SQL
-# Create table for user bucket list information (id, activity, accomplished?)
-create_bucketlist_cmd = <<-SQL
-	CREATE TABLE IF NOT EXISTS bucketlist(
+# Create activities table for user bucket list information (id, activity, accomplished?)
+create_activities_cmd = <<-SQL
+	CREATE TABLE IF NOT EXISTS activities(
 		id INTEGER PRIMARY KEY,
 		activity VARCHAR(255),
 		accomplished BOOLEAN
 	);
 SQL
 
-# Create table for user location 
+# Create table for user locations 
 create_location_cmd = <<-SQL
 	CREATE TABLE IF NOT EXISTS locations(
 		id INTEGER PRIMARY KEY,
@@ -47,5 +47,32 @@ SQL
 # Create tables with commands
 db.execute(create_users_cmd)
 db.execute(create_location_cmd)
-db.execute(create_bucketlist_cmd)
-# Create UI for user input 
+db.execute(create_activities_cmd)
+
+# Create methods for CRUD
+
+# method to create a user
+def create_user(db, name, age, instagram, activity_id, location_id)
+	db.execute("INSERT INTO users (name, age, instagram, activity_id, location_id) VALUES (?, ?, ?, ?, ?)", [name, age, instagram, activity, location])
+end
+
+def display_user(db)
+	db.results_as_hash = true
+	display_users_cmd = <<-SQL
+		SELECT users.name, users.age, users.instagram, activities.activity_id, locations.location_id
+		FROM users 
+		JOIN activity_id ON users.activity_id = activity.id 
+		JOIN locations_id ON users.location_id = locations.id
+	SQL
+	display = db.execute(display_users_cmd)
+	display.each do |user|
+		puts "Name: #{user["name"]} | Age: #{user["age"]} | Instagram Username: #{user["instagram"]} | Bucket List: #{user["activities"]} | Location:#{user["location"]}"
+	end
+end
+
+#-------------------------------DRIVER CODE-------------------------------#
+create_user("Caitlin Johnson", 30, "caitlinlikesyou", 1)
+
+
+
+
