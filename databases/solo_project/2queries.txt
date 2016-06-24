@@ -85,3 +85,10 @@ Annette Brand|38963
 Annette Brand|38963
 Annette Brand|38963
 Annette Brand|38963
+
+sqlite> SELECT bucketlist.activity, bucketlist.comment FROM bucketlist LEFT OUTER JOIN users ON users.name;
+Dollywood|Dream vacation!
+Zipline|weekend adventure
+Travel Europe|while I still can
+Dunk a basketball|Like Tim Duncan
+Eat New England clam chowder|with fresh ingredients
