@@ -8,7 +8,6 @@
 
 #require gems
 require 'sqlite3'
-require 'faker'
 
 # Create SQLite3 database 
 db = SQLite3::Database.new("summergoal.db")
@@ -21,10 +20,11 @@ create_users_cmd = <<-SQL
 		name VARCHAR(255),
 		age INT,
 		zipcode INT,
+		instagram VARCHAR(255),
 		activity_id INT,
-		social_id INT,
+		accomplished_id INT,
 		FOREIGN KEY (activity_id) REFERENCES summergoal(id),
-		FOREIGN KEY (social_id) REFERENCES socialmedia(id)
+		FOREIGN KEY (accomplished_id) REFERENCES accomplished(id)
 	);
 SQL
 # Create activities table for user summer goal information (id, activity, accomplished?)
@@ -33,41 +33,38 @@ create_summergoal_cmd = <<-SQL
 		id INTEGER PRIMARY KEY,
 		activity VARCHAR(255),
 		comment VARCHAR(255),
-		location INT,
-		accomplished BOOLEAN
+		location INT
 	);
 SQL
 
 # Create table for user instagram accounts 
-create_socialmedia_cmd = <<-SQL
-	CREATE TABLE IF NOT EXISTS socialmedia(
+create_accomplished_cmd = <<-SQL
+	CREATE TABLE IF NOT EXISTS accomplished(
 		id INTEGER PRIMARY KEY,
-		facebook VARCHAR(255),
-		instagram VARCHAR(255),
-		twitter VARCHAR(255)
+		accomplished VARCHAR(255)
 	);
 SQL
 
 # Create tables with commands
 db.execute(create_users_cmd)
-db.execute(create_socialmedia_cmd)
+db.execute(create_accomplished_cmd)
 db.execute(create_summergoal_cmd)
 
 # Create methods for CRUD
 
 # create a method to create a user
 def create_user(db, name, age, zipcode, activity_id, social_id)
-	db.execute("INSERT INTO users (name, age, zipcode, activity_id, social_id) VALUES (?, ?, ?, ?, ?)", [name, age, zipcode, activity_id, social_id])
+	db.execute("INSERT INTO users (name, age, zipcode, activity_id, accomplished_id) VALUES (?, ?, ?, ?, ?)", [name, age, zipcode, activity_id, accomplished_id])
 end
 
 # create a method to add activities
-def create_summergoal(db, activity, comment, location, accomplished)
-	db.execute("INSERT INTO summergoal (activity, comment, location, accomplished) VALUES (?, ?, ?, ?)", [activity, comment, location, accomplished])
+def create_summergoal(db, activity, comment, location)
+	db.execute("INSERT INTO summergoal (activity, comment, location) VALUES (?, ?, ?, ?)", [activity, comment, location])
 end
 
 # create a method to add social media usernames
-def create_socialmedia(db, facebook, instagram, twitter)
-	db.execute("INSERT INTO socialmedia (facebook, instagram, twitter) VALUES (?, ?, ?)", [facebook, instagram, twitter])
+def create_accomplished(db, accomplished)
+	db.execute("INSERT INTO accomplished (accomplished) VALUES (?)",[accomplished])
 end
 
 # create a method to JOIN tables and display user information
@@ -76,23 +73,21 @@ def display_user(db)
 	display_users_cmd = <<-SQL
 		SELECT users.name, 
 		users.age, 
-		users.zipcode, 
-		socialmedia.facebook, 
-		socialmedia.instagram, 
-		socialmedia.twitter, 
+		users.zipcode,
+		users.instagram, 
+		accomplished.accomplished, 
 		summergoal.activity, 
 		summergoal.comment, 
-		summergoal.location, 
-		summergoal.accomplished 
+		summergoal.location 
 		FROM users 
 		INNER JOIN summergoal 
 		ON users.activity_id = summergoal.id 
-		INNER JOIN socialmedia ON 
-		users.social_id = socialmedia.id;
+		INNER JOIN accomplished 
+		ON users.accomplished_id = accomplished.id;
 	SQL
 	display = db.execute(display_users_cmd)
 	display.each do |user|
-		puts "Name: #{user["name"]} \nAge: #{user["age"]} \nLocation: #{user["zipcode"]} \nSummer Goal: #{user["activity"]} \nActivity Comment: #{user["comment"]} \nInstagram: #{user["instagram"]} \nActivity Location: #{user["location"]}"
+		puts "Name: #{user["name"]} \nAge: #{user["age"]} \nLocation: #{user["zipcode"]} \nSummer Goal: #{user["activity"]} \nActivity Comment: #{user["comment"]} \nInstagram: #{user["instagram"]} \nActivity Location: #{user["location"]} \nAccomplished:#{user["accomplished"]}"
 	end
 end
 
@@ -103,7 +98,7 @@ end
 		age_cmd = "UPDATE users SET age = ? WHERE age = ?"
 		zipcode_cmd = "UPDATE users SET zipcode = ? WHERE zipcode = ?"
 		activity_id_cmd = "UPDATE users SET activity_id = ? WHERE activity_id = ?"
-		social_id_cmd = "UPDATE users SET social_id = ? WHERE social_id = ?"
+		accomplished_id_cmd = "UPDATE users SET accomplished_id = ? WHERE accomplished_id = ?"
 
 		case updated_object
 		when 'name'
@@ -114,8 +109,8 @@ end
 			cmd = zipcode_cmd
 		when 'activity_id'
 			cmd = activity_id_cmd
-		when 'social_id'
-			cmd = social_id_cmd
+		when 'accomplished_id'
+			cmd = accomplished_id_cmd
 		end
 
 		db.execute(cmd, [updated_value, updated_user])
@@ -134,43 +129,43 @@ end
 # create_user(db, "Ryan Johnson", 35, 77006, 2, 1)
 # create_user(db, "Grayson Bagwell", 30, 60608, 3, 2)
 # create_user(db, "Becky Brand", 56, 77006, 4, 2)
+# create_accomplished(db, "I did it! Heck yeah!")
+# create_accomplished(db, "I'm getting so close!")
+# create_accomplished(db, "I'm planning on starting tomorrow! Promise!")
+
 # create_summergoal(db, "Dollywood", "Dolly Parton is a goddess.", 96701, 0)
 # create_summergoal(db, "Scuba Dive", "Fight a shark!", 00123, 0)
 # create_summergoal(db, "Dunk a Basketball", "Like Lebron.", 44101, 0)
 # create_summergoal(db, "Eat a burger", "why not", 90210, 0)
-# create_socialmedia(db, "caitlinlikesyou", "caitlinlikesyou", "caitlinateit")
-# create_socialmedia(db, "nayrj26", "ryanrulzz", "rynomite")
-# create_socialmedia(db, "free_ghb", "ghb$$", "graysoncomplains")
-# create_socialmedia(db, "beckobrand", "beckygoodhair", "beckywurst")
 # delete_user(db, "Becky Brand")
 display_user(db)
 
 #-------------------------------UI-------------------------------#
-puts "Let's set our Summer Goal!"
-puts "To add a user: enter 'user'."
-puts "To create a summer goal: enter 'goal'."
-puts "To list social media accounts: enter 'social'."
-puts "To update a user's information: enter 'update'."
-puts "To remove a user: enter 'delete'."
-input = gets.chomp
+# puts "Let's set our Summer Goal!"
+# puts "To add a user: enter 'user'."
+# puts "To create a summer goal: enter 'goal'."
+# puts "To list social media accounts: enter 'social'."
+# puts "To update a user's information: enter 'update'."
+# puts "To remove a user: enter 'delete'."
+# input = gets.chomp
 
-case input
+# activity_id = 0
+# 	social_id = 0
 
-when 'user'
-	activity_id = 0
-	social_id = 0
+# case input
 
-	puts "User's name:"
-	username = gets.chomp
+# when 'user'
 
-	puts "User's age:"
-	userage = gets.chomp.to_i
+# 	puts "User's name:"
+# 	username = gets.chomp
 
-	puts "User's zipcode:"
-	userzip = gets.chomp.to_i
+# 	puts "User's age:"
+# 	userage = gets.chomp.to_i
 
-	
+# 	puts "User's zipcode:"
+# 	userzip = gets.chomp.to_i
 
+# 
 
 
 
