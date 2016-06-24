@@ -20,71 +20,86 @@ create_users_cmd = <<-SQL
 		id INTEGER PRIMARY KEY,
 		name VARCHAR(255),
 		age INT,
-		instagram VARCHAR(255)
+		zipcode INT,
+		activity_id INT,
+		social_id INT,
+		FOREIGN KEY (activity_id) REFERENCES bucketlist(id),
+		FOREIGN KEY (social_id) REFERENCES socialmedia(id)
 	);
 SQL
 # Create activities table for user bucket list information (id, activity, accomplished?)
-create_activities_cmd = <<-SQL
-	CREATE TABLE IF NOT EXISTS activities(
+create_bucketlist_cmd = <<-SQL
+	CREATE TABLE IF NOT EXISTS bucketlist(
 		id INTEGER PRIMARY KEY,
 		activity VARCHAR(255),
 		comment VARCHAR(255),
-		accomplished BOOLEAN,
-		user_id INT,
-		location_id INT,
-		FOREIGN KEY (user_id) REFERENCES users(id),
-		FOREIGN KEY (location_id) REFERENCES locations(id)
+		zipcode INT,
+		accomplished BOOLEAN
 	);
 SQL
 
-# Create table for user locations 
-create_location_cmd = <<-SQL
-	CREATE TABLE IF NOT EXISTS locations(
+# Create table for user instagram accounts 
+create_socialmedia_cmd = <<-SQL
+	CREATE TABLE IF NOT EXISTS socialmedia(
 		id INTEGER PRIMARY KEY,
-		location INT
+		facebook VARCHAR(255),
+		instagram VARCHAR(255),
+		twitter VARCHAR(255)
 	);
 SQL
 
 # Create tables with commands
 db.execute(create_users_cmd)
-db.execute(create_location_cmd)
-db.execute(create_activities_cmd)
+db.execute(create_socialmedia_cmd)
+db.execute(create_bucketlist_cmd)
 
 # Create methods for CRUD
 
 # create a method to create a user
-def create_user(db, name, age, instagram)
-	db.execute("INSERT INTO users (name, age, instagram) VALUES (?, ?, ?)", [name, age, instagram])
+def create_user(db, name, age, zipcode, activity_id, social_id)
+	db.execute("INSERT INTO users (name, age, zipcode, activity_id, social_id) VALUES (?, ?, ?, ?, ?)", [name, age, zipcode, activity_id, social_id])
 end
 
 # create a method to add activities
-def create_bucketlist(db, activity, comment, accomplished)
-	db.execute("INSERT INTO activities (activity, comment, accomplished) VALUES (?, ?, ?)", [activity, comment, accomplished])
+def create_bucketlist(db, activity, comment, zipcode, accomplished)
+	db.execute("INSERT INTO bucketlist (activity, comment, zipcode, accomplished) VALUES (?, ?, ?, ?)", [activity, comment, zipcode, accomplished])
 end
 
-def create_location(db, location)
-	db.execute("INSERT INTO locations (location) VALUES (?)", [location])
+def create_socialmedia(db, facebook, instagram, twitter)
+	db.execute("INSERT INTO socialmedia (facebook, instagram, twitter) VALUES (?, ?, ?)", [facebook, instagram, twitter])
 end
 
 def display_user(db)
 	db.results_as_hash = true
 	display_users_cmd = <<-SQL
-		SELECT users.name, users.age, users.instagram, activities.user_id, activities.location_id, locations.location
-		FROM activities 
-		JOIN users ON activities.user_id = users.id 
-		JOIN locations ON activities.location_id = locations.id
+		SELECT users.name, 
+		users.age, 
+		users.zipcode, 
+		socialmedia.facebook, 
+		socialmedia.instagram, 
+		socialmedia.twitter, 
+		bucketlist.activity, 
+		bucketlist.comment, 
+		bucketlist.zipcode, 
+		bucketlist.accomplished 
+		FROM bucketlist 
+		INNER JOIN users 
+		ON bucketlist.user_id = users.id 
+		INNER JOIN socialmedia ON 
+		bucektlist.social_id = socialmedia.id;
 	SQL
-	display = db.execute(display_users_cmd)
-	display.each do |user|
-		puts "Name: #{user["name"]} | Age: #{user["age"]} | Instagram Username: #{user["instagram"]} | Bucket List: #{user["activities"]} | Location:#{user["location"]}"
-	end
+	# display = db.execute(display_users_cmd)
+	# display.each do |user|
+	# 	puts "Name: #{user["name"]} | Age: #{user["age"]} | Location: #{user["zipcode"]} | 
+	# Bucket List: #{user["bucketlist"]} | Location:#{user["location"]}"
+	# end
 end
 
 # #-------------------------------DRIVER CODE-------------------------------#
-# create_user(db, "Caitlin Johnson", 30, "caitlinlikesyou")
-# create_bucketlist(db, "Go to Dollywood", "I've wanted to go since I saw 9 to 5.", 0)
-# create_location(db, 60608)
-p display_user(db)
+create_user(db, "Grayson Bagwell", 30, 60608, 2, 3)
+create_bucketlist(db, "Dunk a Basketball", "Like Tim Duncan.", 77076, 0)
+create_socialmedia(db, "grayson_ghb", "free_ghb", "graysoncomplains")
+display_user(db)
 
 
 
