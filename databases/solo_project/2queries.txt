@@ -1,0 +1,87 @@
+1. Display the information in one table (either table is fine).
+
+sqlite> SELECT * FROM bucketlist;
+1|Dollywood|Dream vacation!|37863|0
+2|Zipline|weekend adventure|61341|0
+3|Travel Europe|while I still can|75008|0
+4|Dunk a basketball|Like Tim Duncan|78250|0
+5|Eat New England clam chowder|with fresh ingredients|4005|0
+
+2.Update an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> UPDATE bucketlist SET accomplished=1 WHERE comment="while I still can";
+sqlite> SELECT * FROM bucketlist;
+1|Dollywood|Dream vacation!|37863|0
+2|Zipline|weekend adventure|61341|0
+3|Travel Europe|while I still can|75008|1
+4|Dunk a basketball|Like Tim Duncan|78250|0
+5|Eat New England clam chowder|with fresh ingredients|4005|0
+
+3. Display the information in both tables using one query.
+
+sqlite> SELECT * FROM users, bucketlist WHERE users.activity_id = bucketlist.id; 
+1|Caitlin Johnson|30|60608|4|4|Dunk a basketball|Like Tim Duncan|78250|0
+2|Ryan Johnson|30|77006|1|1|Dollywood|Dream vacation!|37863|0
+3|Daphne Prudence|18|13210|5|5|Eat New England clam chowder|with fresh ingredients|4005|0
+4|Annette Brand|89|38963|3|3|Travel Europe|while I still can|75008|1
+5|Grayson Bagwell|14|6776|4|4|Dunk a basketball|Like Tim Duncan|78250|0
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+sqlite> SELECT users.name, bucketlist.activity FROM bucketlist JOIN users ON users.activity_id = bucketlist.id;
+Caitlin Johnson|Dunk a basketball
+Ryan Johnson|Dollywood
+Daphne Prudence|Eat New England clam chowder
+Annette Brand|Travel Europe
+Grayson Bagwell|Dunk a basketball
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+ADULTS ONLY!
+
+sqlite> DELETE FROM users WHERE age<18;
+sqlite> SELECT * FROM users;
+1|Caitlin Johnson|30|60608|3
+2|Ryan Johnson|30|77006|1
+3|Daphne Prudence|18|13210|5
+4|Annette Brand|89|38963|3
+
+6. 
+
+sqlite> SELECT users.name, bucketlist.activity FROM bucketlist JOIN users ON users.activity_id = 3;
+
+We're going to do them all together! 
+
+Annette Brand|Dollywood
+Caitlin Johnson|Dollywood
+Annette Brand|Zipline
+Caitlin Johnson|Zipline
+Annette Brand|Travel Europe
+Caitlin Johnson|Travel Europe
+Annette Brand|Dunk a basketball
+Caitlin Johnson|Dunk a basketball
+Annette Brand|Eat New England clam chowder
+Caitlin Johnson|Eat New England clam chowder
+
+SELECT users.name, users.zipcode FROM users CROSS JOIN bucketlist;
+sqlite> SELECT users.name, users.zipcode FROM users CROSS JOIN bucketlist;
+Caitlin Johnson|60608
+Caitlin Johnson|60608
+Caitlin Johnson|60608
+Caitlin Johnson|60608
+Caitlin Johnson|60608
+Ryan Johnson|77006
+Ryan Johnson|77006
+Ryan Johnson|77006
+Ryan Johnson|77006
+Ryan Johnson|77006
+Daphne Prudence|13210
+Daphne Prudence|13210
+Daphne Prudence|13210
+Daphne Prudence|13210
+Daphne Prudence|13210
+Annette Brand|38963
+Annette Brand|38963
+Annette Brand|38963
+Annette Brand|38963
+Annette Brand|38963
