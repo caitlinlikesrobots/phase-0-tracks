@@ -127,7 +127,7 @@ end
 			cmd = accomplished_id_cmd
 		end
 
-		db.execute(cmd, [updated_value, updated_user])
+		db.execute(cmd, updated_value, updated_user)
 	end
 
 # create a method to delete a user
@@ -189,13 +189,13 @@ when 'user'
 
 	puts "What is motivating you to complete this goal? \nChoose from: 'social media', 'family', 'health', 'happiness'."
 	user_motivation = gets.chomp
-		if user_motivation == "social media"
+		if user_motivation == 'social media'
 			motivation_id = 1
-		elsif user_motivation == "family"
+		elsif user_motivation == 'family'
 			motivation_id = 2
-		elsif user_motivation == "health"
+		elsif user_motivation == 'health'
 			motivation_id = 3
-		elsif user_motivation == "happiness"
+		elsif user_motivation == 'happiness'
 			motivation_id = 4
 		else motivation_id = 5
 		end 
@@ -216,27 +216,48 @@ when 'update'
 	updated_object = gets.chomp
 
 	case updated_object 
-	when "motivation"
+	when "name"
+		puts "What is your new name?"
+		updated_value = gets.chomp
+	when "age"
+		puts "What is your new age?"
+		updated_value = gets.chomp.to_i
+	when "zipcode"
+		puts "What is your new zipcode?"
+		updated_value = gets.chomp.to_i
+	when "instagram"
+		puts "What is your new Instagram username?"
+		updated_value = gets.chomp
+	when "activity"
+		puts "What is your new summer goal?"
+		updated_value = gets.chomp
+	when "commet"
+		puts "What is your new comment?"
+		updated_value = gets.chomp
+	when "activity_location"
+		puts "Where is your new activity? (zipcode)"
+		updated_value = gets.chomp.to_i
+	when 'motivation'
 		puts "What is motivating you now?['social media', 'family', 'health', 'happiness']"
 		updated_value = gets.chomp
-		if updated_value == "social media"
-			motivation_id = 1 
-		elsif updated_value == "family"
+		case updated_value
+		when "social media"
+			motivation_id = 1
+		when "family"
 			motivation_id = 2
-		elsif updated_value == "health"
+		when "health"
 			motivation_id = 3
-		elsif updated_value == "happiness"
+		when "happiness" 
 			motivation_id = 4
-		else motivation_id = 5
 		end 
-
-	when "accomplished"
+		display_user(db)
+	when 'accomplished'
 		puts "On a scale of 1 to 3, with 1 being completely accomplished,\nNOW how far are you from reaching your goal?"
-		updated_value = gets.chomp
-	end
+		updated_value = gets.chomp.to_i
 
 	update_user(db, updated_object, updated_value, updated_user)
 	display_user(db)
+	end
 
 when 'display'
 	display_user(db)
