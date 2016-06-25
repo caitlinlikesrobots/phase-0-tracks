@@ -102,7 +102,7 @@ end
 		instagram_cmd = "UPDATE users SET instagram = ? WHERE instagram = ?"
 		activity_cmd = "UPDATE users SET activity = ? WHERE activity = ?"
 		comment_cmd = "UPDATE users SET comment = ? WHERE comment = ?"
-		activity_location_cmd "UPDATE users SET activity_location = ? WHERE activity_location = ?"
+		activity_location_cmd = "UPDATE users SET activity_location = ? WHERE activity_location = ?"
 		motivation_id_cmd = "UPDATE users SET motivation_id = ? WHERE motivation_id = ?"
 		accomplished_id_cmd = "UPDATE users SET accomplished_id = ? WHERE accomplished_id = ?"
 
@@ -204,12 +204,50 @@ when 'user'
 	goal_reach = gets.chomp.to_i
 
 	create_user(db, user_name, user_age, user_zip, user_instagram, user_goal, user_comment, goal_zip, motivation_id, goal_reach)
+	display_user(db)
 
 when 'update'
+	display_user(db)
 
+	puts "What user would you like to update?"
+	updated_user = gets.chomp
 
-display_user(db)
+	puts "What would you like updated? \n[name, age, zipcode, instagram, activity, comment, activity_location, motivation, accomplished]."
+	updated_object = gets.chomp
 
+	case updated_object 
+	when "motivation"
+		puts "What is motivating you now?['social media', 'family', 'health', 'happiness']"
+		updated_value = gets.chomp
+		if updated_value == "social media"
+			motivation_id = 1 
+		elsif updated_value == "family"
+			motivation_id = 2
+		elsif updated_value == "health"
+			motivation_id = 3
+		elsif updated_value == "happiness"
+			motivation_id = 4
+		else motivation_id = 5
+		end 
+
+	when "accomplished"
+		puts "On a scale of 1 to 3, with 1 being completely accomplished,\nNOW how far are you from reaching your goal?"
+		updated_value = gets.chomp
+	end
+
+	update_user(db, updated_object, updated_value, updated_user)
+	display_user(db)
+
+when 'display'
+	display_user(db)
+
+when 'delete'
+	display_user(db)
+	puts "What user would you like to remove?"
+	removed_user = gets.chomp
+	delete_user(db, removed_user)
+	display_user(db)
+end
 
 
 
