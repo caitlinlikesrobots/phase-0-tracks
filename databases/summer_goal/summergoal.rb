@@ -99,6 +99,10 @@ end
 		name_cmd = "UPDATE users SET name = ? WHERE name = ?"
 		age_cmd = "UPDATE users SET age = ? WHERE age = ?"
 		zipcode_cmd = "UPDATE users SET zipcode = ? WHERE zipcode = ?"
+		instagram_cmd = "UPDATE users SET instagram = ? WHERE instagram = ?"
+		activity_cmd = "UPDATE users SET activity = ? WHERE activity = ?"
+		comment_cmd = "UPDATE users SET comment = ? WHERE comment = ?"
+		activity_location_cmd "UPDATE users SET activity_location = ? WHERE activity_location = ?"
 		motivation_id_cmd = "UPDATE users SET motivation_id = ? WHERE motivation_id = ?"
 		accomplished_id_cmd = "UPDATE users SET accomplished_id = ? WHERE accomplished_id = ?"
 
@@ -109,6 +113,14 @@ end
 			cmd = age_cmd
 		when 'zipcode'
 			cmd = zipcode_cmd
+		when 'instagram'
+			cmd = instagram_cmd
+		when 'activity'
+			cmd = activity_cmd
+		when 'comment'
+			cmd = comment_cmd
+		when 'activity_location'
+			cmd = activity_location_cmd
 		when 'motivation_id'
 			cmd = motivation_id_cmd
 		when 'accomplished_id'
@@ -138,6 +150,7 @@ end
 # create_motivation(db, "For my family.")
 # create_motivation(db, "For my health and mental well-being")
 # create_motivation(db, "For an essential sense of self and happiness.")
+# create_motivation(db, "Why not?")
 # delete_user(db, "Becky Brand")
 # display_user(db)
 
@@ -145,6 +158,7 @@ end
 puts "Let's set our Summer Goal!"
 puts "To add a user: enter 'user'."
 puts "To update a user's information: enter 'update'."
+puts "To see all users: enter 'display'."
 puts "To remove a user: enter 'delete'."
 input = gets.chomp
 
@@ -190,7 +204,9 @@ when 'user'
 	goal_reach = gets.chomp.to_i
 
 	create_user(db, user_name, user_age, user_zip, user_instagram, user_goal, user_comment, goal_zip, motivation_id, goal_reach)
-end
+
+when 'update'
+
 
 display_user(db)
 
