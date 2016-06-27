@@ -6,14 +6,15 @@
 * Allow users to DELETE profile
 =end
 
-#require gems
+# require gems
 require 'sqlite3'
+require 'faker'
 
 # Create SQLite3 database 
 db = SQLite3::Database.new("summergoal.db")
 db.results_as_hash = true
 
-# Create table for user information (id, name, age, instagram, location by zipcode, FOREIGN KEY activity_id)
+# Create table for user information (id, name, age, zipcode, instagram, activity, comment, accitvity_location, ids)
 create_users_cmd = <<-SQL
 	CREATE TABLE IF NOT EXISTS users(
 		id INTEGER PRIMARY KEY,
@@ -30,7 +31,7 @@ create_users_cmd = <<-SQL
 		FOREIGN KEY (accomplished_id) REFERENCES accomplished(id)
 	);
 SQL
-# Create activities table for user summer goal information (id, activity, accomplished?)
+# Create activities table for user summer goal information (id, motivation)
 create_motivation_cmd = <<-SQL
 	CREATE TABLE IF NOT EXISTS motivation(
 		id INTEGER PRIMARY KEY,
@@ -38,7 +39,7 @@ create_motivation_cmd = <<-SQL
 	);
 SQL
 
-# Create table for user instagram accounts 
+# Create table for user accomplishment
 create_accomplished_cmd = <<-SQL
 	CREATE TABLE IF NOT EXISTS accomplished(
 		id INTEGER PRIMARY KEY,
@@ -58,12 +59,12 @@ def create_user(db, name, age, zipcode, instagram, activity, comment, activity_l
 	db.execute("INSERT INTO users (name, age, zipcode, instagram, activity, comment, activity_location, motivation_id, accomplished_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [name, age, zipcode, instagram, activity, comment, activity_location, motivation_id, accomplished_id])
 end
 
-# create a method to add activities
+# create a method to add motivation
 def create_motivation(db, motivation)
 	db.execute("INSERT INTO motivation (motivation) VALUES (?)", [motivation])
 end
 
-# create a method to add social media usernames
+# create a method to add accomplishment
 def create_accomplished(db, accomplished)
 	db.execute("INSERT INTO accomplished (accomplished) VALUES (?)",[accomplished])
 end
@@ -85,11 +86,11 @@ def display_user(db)
 		INNER JOIN motivation 
 		ON users.motivation_id = motivation.id 
 		INNER JOIN accomplished 
-		ON users.accomplished_id = accomplished.id;
+		ON users.accomplished_id = accomplished.id
 	SQL
 	display = db.execute(display_users_cmd)
 	display.each do |user|
-		puts "--------------\nName: #{user["name"]} \nAge: #{user["age"]} \nLocation: #{user["zipcode"]} \nSummer Goal: #{user["activity"]} \nActivity Comment: #{user["comment"]} \nInstagram: #{user["instagram"]} \nActivity Location: #{user["activity_location"]} \nAccomplished:#{user["accomplished"]} \n#{user["motivation"]}"
+		puts "--------------\nName: #{user["name"]} \nAge: #{user["age"]} \nLocation: #{user["zipcode"]} \nSummer Goal: #{user["activity"]} \nActivity Comment: #{user["comment"]} \nInstagram: #{user["instagram"]} \nActivity Location: #{user["activity_location"]} \nAccomplished:#{user["accomplished"]} \nMotivation: #{user["motivation"]}"
 	end
 end
 
@@ -127,7 +128,7 @@ end
 			cmd = accomplished_id_cmd
 		end
 
-		db.execute(cmd, updated_value, updated_user)
+		db.execute(cmd, updated_object, updated_value, updated_user)
 	end
 
 # create a method to delete a user
@@ -216,27 +217,35 @@ when 'update'
 	updated_object = gets.chomp
 
 	case updated_object 
+	
 	when "name"
 		puts "What is your new name?"
 		updated_value = gets.chomp
+	
 	when "age"
 		puts "What is your new age?"
 		updated_value = gets.chomp.to_i
+	
 	when "zipcode"
 		puts "What is your new zipcode?"
 		updated_value = gets.chomp.to_i
+	
 	when "instagram"
 		puts "What is your new Instagram username?"
 		updated_value = gets.chomp
+	
 	when "activity"
 		puts "What is your new summer goal?"
 		updated_value = gets.chomp
+	
 	when "commet"
 		puts "What is your new comment?"
 		updated_value = gets.chomp
+	
 	when "activity_location"
 		puts "Where is your new activity? (zipcode)"
 		updated_value = gets.chomp.to_i
+	
 	when 'motivation'
 		puts "What is motivating you now?['social media', 'family', 'health', 'happiness']"
 		updated_value = gets.chomp
@@ -251,6 +260,7 @@ when 'update'
 			motivation_id = 4
 		end 
 		display_user(db)
+	
 	when 'accomplished'
 		puts "On a scale of 1 to 3, with 1 being completely accomplished,\nNOW how far are you from reaching your goal?"
 		updated_value = gets.chomp.to_i
