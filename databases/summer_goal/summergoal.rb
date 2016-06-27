@@ -8,7 +8,7 @@
 
 # require gems
 require 'sqlite3'
-require 'faker'
+
 
 # Create SQLite3 database 
 db = SQLite3::Database.new("summergoal.db")
@@ -161,6 +161,7 @@ puts "To add a user: enter 'user'."
 puts "To update a user's information: enter 'update'."
 puts "To see all users: enter 'display'."
 puts "To remove a user: enter 'delete'."
+puts "To exit: enter 'exit'."
 input = gets.chomp
 
 
@@ -278,7 +279,11 @@ when 'delete'
 	removed_user = gets.chomp
 	delete_user(db, removed_user)
 	display_user(db)
+
+when 'exit'
+	puts "Exiting. Thank you!"
 end
+
 
 
 
