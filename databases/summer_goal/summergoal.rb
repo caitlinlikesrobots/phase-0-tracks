@@ -138,6 +138,7 @@ end
 	db.execute(delete_user_cmd, [name_to_delete])
 	end
 
+<<<<<<< HEAD
 hard populate motivation and accomplishment once and then comments it out
 1.times do create_accomplished(db, "I did it! Heck yeah!") end
 1.times do create_accomplished(db, "I'm getting so close!") end
@@ -206,7 +207,6 @@ when 'user'
 
 	puts "What is motivating you to complete this goal? \nChoose from: 'social media', 'family', 'health', 'happiness'."
 	user_motivation = gets.chomp
-
 		if user_motivation == 'social media'
 			motivation_id = 1
 		elsif user_motivation == 'family'
@@ -218,11 +218,10 @@ when 'user'
 		else motivation_id = 5
 		end 
 
-	puts "How far are you from reaching your goal?"
+	puts "On a scale of 1 to 3, with 1 being completely accomplished,\nhow far are you from reaching your goal?"
 	goal_reach = gets.chomp.to_i
 
-	create_user(db, user_name, user_age, user_zip, user_instagram, user_goal, user_comment, goal_zip, user_motivation, goal_reach)
-	
+	create_user(db, user_name, user_age, user_zip, user_instagram, user_goal, user_comment, goal_zip, motivation_id, goal_reach)
 	display_user(db)
 
 when 'update'
@@ -300,6 +299,3 @@ when 'delete'
 when 'exit'
 	puts "Exiting... Thank you."
 end
-
-
-
