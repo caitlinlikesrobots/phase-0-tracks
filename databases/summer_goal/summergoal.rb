@@ -138,8 +138,7 @@ end
 	db.execute(delete_user_cmd, [name_to_delete])
 	end
 
-<<<<<<< HEAD
-hard populate motivation and accomplishment once and then comments it out
+# hard populate motivation and accomplishment once and then comments it out
 1.times do create_accomplished(db, "I did it! Heck yeah!") end
 1.times do create_accomplished(db, "I'm getting so close!") end
 1.times do create_accomplished(db, "I'm planning on starting tomorrow! Promise!")end
@@ -152,8 +151,7 @@ hard populate motivation and accomplishment once and then comments it out
 1.times do create_motivation(db, "For an essential sense of self and happiness.")end
 1.times do create_motivation(db, "Why not?")end
 
-
-	#create a method that uses zipcodes to show how literally far away a person is from their goal
+#create a method that uses zipcodes to show how literally far away a person is from their goal
 
 #-------------------------------DRIVER CODE-------------------------------#
 # create_user(db, "Caitlin Johnson", 30, 60608, "caitlinlikesyou", "Dollywood", "Dolly Parton is a goddess.", 37863, 3, 3)
