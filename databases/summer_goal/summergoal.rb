@@ -143,9 +143,7 @@ end
 	end
 
 
-
-
-	#create a method that uses zipcodes to show how literally far away a person is from their goal
+#create a method that uses zipcodes to show how literally far away a person is from their goal
 
 #-------------------------------DRIVER CODE-------------------------------#
 # create_user(db, "Caitlin Johnson", 30, 60608, "caitlinlikesyou", "Dollywood", "Dolly Parton is a goddess.", 37863, 3, 3)
