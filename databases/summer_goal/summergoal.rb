@@ -93,7 +93,7 @@ def display_user(db)
 	SQL
 	display = db.execute(display_users_cmd)
 	display.each do |user|
-		puts "--------------\nName: #{user["name"]} \nAge: #{user["age"]} \nLocation: #{user["zipcode"]} \nSummer Goal: #{user["activity"]} \nActivity Comment: #{user["comment"]} \nInstagram: #{user["instagram"]} \nActivity Location: #{user["activity_location"]} \nAccomplished:#{user["accomplished"]} \nMotivation: #{user["motivation"]}"
+		puts "--------------\nName: #{user["name"]} \nAge: #{user["age"]} \nLocation: #{user["zipcode"]} \nSummer Goal: #{user["activity"]} \nActivity Comment: #{user["comment"]} \nInstagram: #{user["instagram"]} \nActivity Location: #{user["activity_location"]} \nAccomplished:#{user["accomplished"]} \nMotivation: #{user["motivation"]}\n--------------"
 	end
 end
 
@@ -162,6 +162,7 @@ end
 # display_user(db)
 
 #-------------------------------UI-------------------------------#
+loop do
 puts "Let's set our Summer Goal!"
 puts "To add a user: enter 'user'."
 puts "To update a user's information: enter 'update'."
@@ -169,6 +170,13 @@ puts "To see all users: enter 'display'."
 puts "To remove a user: enter 'delete'."
 puts "To exit: enter 'exit'."
 input = gets.chomp
+
+	if input == "exit"
+		puts "Exiting... Thank you."
+		break
+
+	end
+
 
 
 case input
@@ -285,7 +293,5 @@ when 'delete'
 	removed_user = gets.chomp
 	delete_user(db, removed_user)
 	display_user(db)
-
-when 'exit'
-	puts "Exiting... Thank you."
+end
 end
