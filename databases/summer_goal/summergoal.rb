@@ -58,15 +58,19 @@ def create_user(db, name, age, zipcode, instagram, activity, comment, activity_l
 	db.execute("INSERT INTO users (name, age, zipcode, instagram, activity, comment, activity_location, motivation_id, accomplished_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [name, age, zipcode, instagram, activity, comment, activity_location, motivation_id, accomplished_id])
 end
 
-# create a method to add motivation
-def create_motivation(db, motivation)
-	db.execute("INSERT INTO motivation (motivation) VALUES (?)", [motivation])
-end
+# add motivations to motivation table
 
-# create a method to add accomplishment
-def create_accomplished(db, accomplished)
-	db.execute("INSERT INTO accomplished (accomplished) VALUES (?)",[accomplished])
-end
+	motivations = ["Comparing myself to others on social media.", "For my family.", "For my health and mental well-being", "For an essential sense of self and happiness.", "Why not?"]
+	motivations.each do |motive|
+	db.execute("INSERT INTO motivation (motivation) VALUES (?)", [motive])
+	end
+
+
+# add accomplishments to accomplished table
+	accomplishments = ["I did it! Heck yeah!", "I'm getting so close!", "I'm planning on starting tomorrow! Promise!"]
+	accomplishments.each do |accomplishment|
+	db.execute("INSERT INTO accomplished (accomplished) VALUES (?)",[accomplishment])
+	end
 
 # create a method to JOIN tables and display user information
 def display_user(db)
@@ -138,19 +142,7 @@ end
 	db.execute(delete_user_cmd, [name_to_delete])
 	end
 
-<<<<<<< HEAD
-hard populate motivation and accomplishment once and then comments it out
-1.times do create_accomplished(db, "I did it! Heck yeah!") end
-1.times do create_accomplished(db, "I'm getting so close!") end
-1.times do create_accomplished(db, "I'm planning on starting tomorrow! Promise!")end
 
-
-
-1.times do create_motivation(db, "Comparing myself to others on social media.")end
-1.times do create_motivation(db, "For my family.")end
-1.times do create_motivation(db, "For my health and mental well-being")end
-1.times do create_motivation(db, "For an essential sense of self and happiness.")end
-1.times do create_motivation(db, "Why not?")end
 
 
 	#create a method that uses zipcodes to show how literally far away a person is from their goal
