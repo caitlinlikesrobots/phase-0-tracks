@@ -2,3 +2,54 @@
   width: 225px;
   height: auto;
 }
+
+body {
+  font-size: 20pt;
+  font-family: helvetica;
+}
+
+#lizardpage{
+  background-color: #ffccff;
+  font-size: 40pt;
+  color: #0000cc;
+}
+
+.sidenav {
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: #99ff99; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #5900b3;
+    display: block;
+    transition: 0.3s
+}
+
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #a64dff;
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
