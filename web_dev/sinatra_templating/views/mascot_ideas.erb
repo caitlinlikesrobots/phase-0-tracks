@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of Suggested Mascots</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Here are the mascots that have been suggested so far:</h1>
+<ul>
+<% @mascots.each do |mascot| %>
+  <li><%= mascot['mascot_ideas'] %></li>
+  <% end %>
+</ul>
+<p>Click <a href="/">HOME</a> to return to the home page.</p>
+</body>
+</html>
